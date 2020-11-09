@@ -2,18 +2,8 @@ header {
   background-color: #403D39;
 }
 
-header #time {
-  color: #F6F6F6;
-  text-align: left;
-  font-size: 1.5vw;
-  padding-top: 2%;
-  padding-left: 2%;
-  margin: 0%;
-}
-
 header #heading {
   padding: 2%;
-  padding-top: 0%;
   text-align: center;
   margin: 0%;
   margin-bottom: 4%;
@@ -22,19 +12,28 @@ header #heading {
 }
 
 table {
+  margin-left: 5%;
+  margin-right: 5%;
+  border-collapse: collapse;
   font-size: 2vw;
 }
 
 table .task {
   width: 6%;
   text-align: left;
-  padding-left: 5%;
+  margin-left: 5%;
 }
 
 table th, table td {
-  padding-top: 1%;
+  margin: 0%;
+  border-bottom: 2px solid #403D39;
+  padding-top: 3%;
   text-align: left;
   width: 2%;
   text-align: left;
+}
+
+table .state {
+  text-align: center;
 }
 /*# sourceMappingURL=style.css.map */
