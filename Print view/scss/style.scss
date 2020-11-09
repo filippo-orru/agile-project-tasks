@@ -13,7 +13,7 @@ header {
 
 table {
     margin-left: 5%;
-    margin-right:5% ;
+    margin-right: 5%;
     border-collapse: collapse;
     font-size: 2vw;
 
@@ -23,20 +23,19 @@ table {
         margin-left: 5%;
     }
 
-    th,td {
-    
-        
+    th,
+    td {
+
+
         margin: 0%;
         border-bottom: 2px solid #403D39;
         padding-top: 3%;
         text-align: left;
         width: 2%;
         text-align: left;
+    }
 
-        
-        
-}
-.state{
-    text-align: center;
-}
+    .state {
+        text-align: center;
+    }
 }
