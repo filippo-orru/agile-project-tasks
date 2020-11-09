@@ -24,7 +24,8 @@ table .task {
   margin-left: 5%;
 }
 
-table th, table td {
+table th,
+table td {
   margin: 0%;
   border-bottom: 2px solid #403D39;
   padding-top: 3%;
@@ -36,4 +37,5 @@ table th, table td {
 table .state {
   text-align: center;
 }
+
 /*# sourceMappingURL=style.css.map */
