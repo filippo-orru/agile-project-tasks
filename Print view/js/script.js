@@ -1,5 +1,5 @@
-addEventListener("load",printSite);
+addEventListener("load", printSite);
 
-function printSite(){
+function printSite() {
     window.print();
 }
