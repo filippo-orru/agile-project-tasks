@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
-    <title>AgileProjectTasks - Home</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Agile Manager</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="icon" href="" type="">
 </head>
-
 <body>
-    <h1>Hello</h1>
-    <p>Add your content here</p>
-    <script src="/static/main.js"></script>
-</body>
 
+<div class="topnav">
+    <a>Agile Manager</a>
+</div>
+
+<table>
+    <tr>
+        <th>Task name</th>
+        <th>Assigned to</th>
+        <th>Due date</th>
+        <th>Progress state</th>
+    </tr>
+    <tr>
+        <td>Task 1</td>
+        <td>Mira Musterfrau</td>
+        <td>23.11.2020</td>
+        <td id="state_in_progress">InProgress</td>
+    </tr>
+    <tr>
+        <td>Task 2</td>
+        <td>Max Mustermann</td>
+        <td>29.11.2020</td>
+        <td id="state_todo">Todo</td>
+    </tr>
+</table>
+
+<br>
+<button type="button" onclick="showMore()">Show More</button>
+
+<script>
+    function showMore(){
+
+    }
+</script>
+</body>
 </html>
