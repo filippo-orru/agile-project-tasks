@@ -44,6 +44,9 @@ function loadTasks(){
                 count++;
             })
             offset += count;
+            if(!data.more){
+                $('#more-tasks-button').css('display', 'none');
+            }
         }
 
     });
