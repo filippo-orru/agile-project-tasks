@@ -1,0 +1,425 @@
+{
+    "Tasks":
+    [   
+        {
+            "id":          1,
+            "name":        "Decrease margins",
+            "description": "Almost all margins in the tables of the new app are too big",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20200928",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201002"
+        },
+        {   
+            "id":          2,
+            "name":        "Structures are emtpy",
+            "description": "The structures from the ajax-call are empty",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201005",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201009"
+        },
+        {   
+            "id":          3,
+            "name":        "Configure wifi",
+            "description": "Upgrade our router-structure to 5G",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201005",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201023"
+        },
+        {
+            "id":          4,
+            "name":        "Accept-buttons green",
+            "description": "Change the color of the 'accept'-buttons to green",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201005",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201009"
+        },
+        {   
+            "id":          5,
+            "name":        "Less text",
+            "description": "There's too much text on an individual screen",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201008",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201016"
+        },
+        {   
+            "id":          6,
+            "name":        "New architecture",
+            "description": "Design the architecture of the new app",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201008",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201020"
+        },
+        {   
+            "id":          7,
+            "name":        "Better overview",
+            "description": "Change up the design of the new screen for a better overview",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201012",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201016"
+        },
+        {
+            "id":          8,
+            "name":        "Menu not responsive",
+            "description": "The menu is way too slow",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201013",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201016"
+        },
+        {   
+            "id":          9,
+            "name":        "Create new table",
+            "description": "The app needs a new kind of table for the recordings",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201013",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201016"
+        },
+        {   
+            "id":          10,
+            "name":        "Menu not responsive",
+            "description": "The menu is way too slow",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201014",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201016"
+        },
+        {
+            "id":          11,
+            "name":        "Fix internet connection",
+            "description": "My internet connection isn't very stable",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201015",
+            "createdBy":   "Oscar Liriano",
+            "dueByDate":   "20201023"
+        },
+        {   
+            "id":          12,
+            "name":        "Send key",
+            "description": "The ajax-calls don't send the keys anymore",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201015",
+            "createdBy":   "Oscar Liriano",
+            "dueByDate":   "20201030"
+        },
+        {   
+            "id":          13,
+            "name":        "Create 3-router-system",
+            "description": "Additionally to the router-upgrade, implement a 3-router-system",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201015",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201023"
+        },
+        {
+            "id":          14,
+            "name":        "Ethernet cables",
+            "description": "Order 6 ethernet cables",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201019",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201023"
+        },
+        {   
+            "id":          15,
+            "name":        "Finish architecture",
+            "description": "Implement the designed architecture",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201019",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201103"
+        },
+        {   
+            "id":          16,
+            "name":        "Change VPN",
+            "description": "Change your VPN to the one I sent you",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201019",
+            "createdBy":   "Laura Munoz",
+            "dueByDate":   "20201023"
+        },
+        {   
+            "id":          17,
+            "name":        "Implement design",
+            "description": "Implement the design for the new app",
+            "state":       "InProgress",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201019",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201103"
+        },
+        {
+            "id":          18,
+            "name":        "Powerpoint",
+            "description": "Create a powerpoint for the upcomming meeting",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201019",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201023"
+        },
+        {   
+            "id":          19,
+            "name":        "Change powerpoint",
+            "description": "Change the presentation where needed",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201021",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201103"
+        },
+        {   
+            "id":          20,
+            "name":        "Change to new structures",
+            "description": "Change the ajax-calls accordingly to fit the new structures",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201022",
+            "createdBy":   "Oscar Liriano",
+            "dueByDate":   "20201106"
+        },
+        {
+            "id":          21,
+            "name":        "Change VPN",
+            "description": "Change your VPN to the one I sent you",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201022",
+            "createdBy":   "Laura Munoz",
+            "dueByDate":   "20201030"
+        },
+        {   
+            "id":          22,
+            "name":        "Learn our system",
+            "description": "Get to know our system",
+            "state":       "Done",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201026",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201026"
+        },
+        {   
+            "id":          23,
+            "name":        "New design",
+            "description": "Come up with a new design for the app",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201026",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201030"
+        },
+        {
+            "id":          24,
+            "name":        "Implement design",
+            "description": "Implement the new design in the app",
+            "state":       "Done",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201027",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201103"
+        },
+        {   
+            "id":          25,
+            "name":        "Create button",
+            "description": "Create the new 'order'-button",
+            "state":       "Done",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201027",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201103"
+        },
+        {   
+            "id":          26,
+            "name":        "Adjust ajax-call",
+            "description": "The ajax-call needs to be adjusted to the new structures",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201027",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201030"
+        },
+        {   
+            "id":          27,
+            "name":        "New table",
+            "description": "Integrate the new table",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201030",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201030"
+        },
+        {
+            "id":          28,
+            "name":        "Inernet connection",
+            "description": "The connection needs to be fixed; it's very inconsistent",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201102",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201102"
+        },
+        {   
+            "id":          29,
+            "name":        "Select salaries",
+            "description": "Make a method with a select-statement with which to get the salaries",
+            "state":       "Done",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201102",
+            "createdBy":   "Oscar Liriano",
+            "dueByDate":   "20201106"
+        },
+        {   
+            "id":          30,
+            "name":        "Change passwords",
+            "description": "Change ALL wifi passwords and let the team know the new ones",
+            "state":       "Done",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201102",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201204"
+        },
+        {
+            "id":          31,
+            "name":        "Push to live-servers",
+            "description": "Export the project to the live-servers",
+            "state":       "Done",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201102",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201103"
+        },
+        {   
+            "id":          32,
+            "name":        "Dark-mode",
+            "description": "Implement a dark-mode in the new app",
+            "state":       "Todo",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201104",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          33,
+            "name":        "Test app",
+            "description": "Test all the features of the app",
+            "state":       "InProgress",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201105",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201113"
+        },
+        {
+            "id":          34,
+            "name":        "Implement dark-mode",
+            "description": "Implement dark-mode (backend)",
+            "state":       "Todo",
+            "assignee":    "Oscar Liriano ",
+            "createdDate": "20201105",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          35,
+            "name":        "Make Powerpoint",
+            "description": "Make a powerpoint for the upcomming presentation of the new app",
+            "state":       "Done",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201106",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          36,
+            "name":        "Review powerpoint",
+            "description": "Review Daniel's powerpoint",
+            "state":       "Todo",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201106",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          37,
+            "name":        "Back-up system",
+            "description": "Create an automatic back-up system for our network",
+            "state":       "InProgress",
+            "assignee":    "Laura Munoz",
+            "createdDate": "20201106",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201120"
+        },
+        {
+            "id":          38,
+            "name":        "New feature",
+            "description": "Design the architecture for the new feature",
+            "state":       "InProgress",
+            "assignee":    "Oscar Liriano",
+            "createdDate": "20201109",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          39,
+            "name":        "Create responsive table",
+            "description": "Create a responsive table for the new list",
+            "state":       "Done",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201109",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201116"
+        },
+        {   
+            "id":          40,
+            "name":        "Setup guest-router",
+            "description": "Setup the guest-router",
+            "state":       "Todo",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201109",
+            "createdBy":   "Laura Munoz",
+            "dueByDate":   "20201116"
+        },
+        {   
+            "id":          41,
+            "name":        "Implement new feature",
+            "description": "Design and implement the new statistics-feature",
+            "state":       "Todo",
+            "assignee":    "Richard Spence",
+            "createdDate": "20201109",
+            "createdBy":   "Vanessa Jackson",
+            "dueByDate":   "20201113"
+        },
+        {   
+            "id":          42,
+            "name":        "Fix data-provider",
+            "description": "The data-provider (backend) only sends empty structures",
+            "state":       "Todo",
+            "assignee":    "Daniel Morgan",
+            "createdDate": "20201110",
+            "createdBy":   "Richard Spence",
+            "dueByDate":   "20201113"
+        }
+    ]
+}
