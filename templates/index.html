@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="static/styles.css">
     <link rel="icon" href="" type="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -15,34 +16,30 @@
     <a>Agile Manager</a>
 </div>
 
-<table>
-    <tr>
-        <th>Task name</th>
-        <th>Assigned to</th>
-        <th>Due date</th>
-        <th>Progress state</th>
-    </tr>
-    <tr>
-        <td>Task 1</td>
-        <td>Mira Musterfrau</td>
-        <td>23.11.2020</td>
-        <td id="state_in_progress">InProgress</td>
-    </tr>
-    <tr>
-        <td>Task 2</td>
-        <td>Max Mustermann</td>
-        <td>29.11.2020</td>
-        <td id="state_todo">Todo</td>
-    </tr>
+<table id="task-table">
+    <thead>
+        <tr>
+            <th>Task name</th>
+            <th>Assigned to</th>
+            <th>Due date</th>
+            <th>Progress state</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- classes "row-even" and "row-odd" have different background colors (get loaded through ajax) -->
+        <tr class="row-template">
+            <td>Task 1</td>
+            <td>Mira Musterfrau</td>
+            <td>23.11.2020</td>
+            <!-- special style for different flags is achieved by adding classes "InProgress", "Done" and "Todo" -->
+            <td><div class="state-flag">InProgress</div></td>
+        </tr>
+    </tbody>
 </table>
 
 <br>
-<button type="button" onclick="showMore()">Show More</button>
+<button type="button" onclick="loadTasks()">Show More</button>
 
-<script>
-    function showMore(){
-
-    }
-</script>
+<script src="./static/main.js"></script>
 </body>
 </html>

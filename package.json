@@ -4,6 +4,7 @@
   "description": "Agile Project Tasks",
   "main": "README.md",
   "dependencies": {
+    "jquery": "^3.5.1",
     "sass": "^1.29.0"
   },
   "devDependencies": {},
