@@ -1,2 +1,4 @@
+npx sass resources/scss/print.scss static/css/print.css
+
 set FLASK_APP=main.py
-python3 -m flask run
+python -m flask run

@@ -3,7 +3,8 @@ Agile Project Tasks
 
 # Run instructions
  - Install python3 (macos: `brew install python3`)
- - Install requirements: `python3 -m pip install -r requirements.txt`
+ - Install requirements: `python -m pip install -r requirements.txt` or `python3 -m pip install -r requirements.txt`
+ - Install node modules: `npm ci`
  - if linux/macos:
    - `chmod a+x start.sh`
    - start the server with `./start.sh`

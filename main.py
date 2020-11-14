@@ -1,5 +1,13 @@
-from flask import Flask, url_for
+from flask import Flask, url_for, jsonify, request
 from flask.templating import render_template
+import json
+
+# read test data
+with open('resources/test_data.json', 'r') as testDataFile:
+    data = testDataFile.read()
+
+testData = json.loads(data)
+
 app = Flask(__name__)
 
 
@@ -8,6 +16,28 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/hello')
-def hello_world():
-    return 'Hello, World!'
+@app.route('/tasks')
+def tasks():
+    offset = 0
+    offsetStr = request.args.get('offset')
+    if offsetStr != '':
+        offset = int(offsetStr)
+
+    limit = 10
+    limitStr = request.args.get('limit')
+    if limitStr != '':
+        limit = int(limitStr)
+
+    if offset + limit <= len(testData):
+        subset = testData[offset:offset + limit]
+    elif offset <= len(testData):
+        subset = testData[offset:]
+    else:
+        subset = []
+
+    return jsonify({
+        "offset": offset,
+        "limit": limit,
+        "more": len(testData) > limit + offset,
+        "tasks": subset
+    })

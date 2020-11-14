@@ -1,2 +1,5 @@
 *.css
-Print view/scss/style.css.map
+*.css.map
+
+node_modules/
+__pycache__
