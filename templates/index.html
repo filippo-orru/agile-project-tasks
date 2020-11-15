@@ -17,8 +17,8 @@
 
 <body>
 
-    <nav class="container-fluid">
-        <div class="row">
+    <div class="row-template">
+        <nav class="container-fluid">
             <div class="col-lg-10 col-md-10 col-sm-10 p-3 pl-5">
                 <a class="topnav">
                     <h1 id="heading">Agile Manager</h1>
@@ -27,11 +27,12 @@
             <div class="col-lg-2 col-md-2 col-sm-2 pt-4 pb-3">
                 <img src="/static/printbutton.svg" alt="">
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <section class="container-fluid pt-5 m-5">
         <table id="task-table">
+
             <thead>
                 <div class="row">
                     <tr>
@@ -44,8 +45,8 @@
             </thead>
 
             <tbody>
-                <div class="row">
-                    <tr class="">
+                <div class="row-template">
+                    <tr>
                         <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 1</td>
                         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Mira Musterfrau</td>
                         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">23.11.2020</td>
@@ -54,39 +55,19 @@
                         </td>
                     </tr>
                 </div>
-                <div class="row">
-                    <tr class="">
-                        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 2</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Max Mustermann</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">29.11.2020</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <div class="inprogress pt-3 pb-3 text-center">In Progress</div>
-                        </td>
-                    </tr>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <tr>
-                            <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 3</td>
-                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Marian Mustermann</td>
-                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">15.04.2020</td>
-                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                                <div class="done p-3 text-center">Done</div>
-                            </td>
-                        </tr>
-                    </div>
-                </div>
             </tbody>
+
         </table>
     </section>
 
     <div class="row">
-        <div class="col"></div>
+        <div class="col">
+
+        </div>
     </div>
 
     <br>
     <button id="more-tasks-button" type="button" onclick="loadTasks()">Show More</button>
-
     <script src="/static/main.js"></script>
 </body>
 
