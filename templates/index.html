@@ -1,48 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Agile Manager</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="static/styles.css">
-    <link rel="icon" href="" type="">
+    <link rel="stylesheet" href="../resources/scss/index.css">
+    <link rel="stylesheet" href="../bootstrap-3.4.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-3.4.1-dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap-3.4.1-dist/css/bootstrap-4-utilities.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
 
-<div class="topnav">
-    <a>Agile Manager</a>
-</div>
+    <nav class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 p-3 pl-5">
+                <a class="topnav">
+                    <h1 id="heading">Agile Manager</h1>
+                </a>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 pt-4 pb-3">
+                <img src="../static/printbutton.svg" alt="">
+            </div>
+        </div>
+    </nav>
 
-<table>
-    <tr>
-        <th>Task name</th>
-        <th>Assigned to</th>
-        <th>Due date</th>
-        <th>Progress state</th>
-    </tr>
-    <tr>
-        <td>Task 1</td>
-        <td>Mira Musterfrau</td>
-        <td>23.11.2020</td>
-        <td id="state_in_progress">InProgress</td>
-    </tr>
-    <tr>
-        <td>Task 2</td>
-        <td>Max Mustermann</td>
-        <td>29.11.2020</td>
-        <td id="state_todo">Todo</td>
-    </tr>
-</table>
+    <section class="container-fluid pt-5 m-5">
+        <table id="task-table">
+            <thead>
+                <div class="row">
+                    <tr>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pt-4 pb-4">Task name</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Assigned to</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">Due Date</th>
+                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">Progress</th>
+                    </tr>
+                </div>
+            </thead>
 
-<br>
-<button type="button" onclick="showMore()">Show More</button>
+            <tbody>
+                <div class="row">
+                        <tr class="">
+                            <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 1</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Mira Musterfrau</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">23.11.2020</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> <div class="todo p-3 text-center">TODO</div></td>
+                        </tr>
+                </div>
+                <div class="row">
+                        <tr class="">
+                            <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 2</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Max Mustermann</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">29.11.2020</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> <div class="inprogress pt-3 pb-3 text-center">In Progress</div></td>
+                        </tr>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <tr>
+                            <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 3</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Marian Mustermann</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">15.04.2020</td>
+                            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> <div class="done p-3 text-center">Done</div></td>
+                        </tr>
+                    </div>
+                </div>
+            </tbody>
+        </table>
+    </section>
 
-<script>
-    function showMore(){
+    <div class="row">
+        <div class="col"></div>
+    </div>
 
-    }
-</script>
+    <br>
+    <button id="more-tasks-button" type="button" onclick="loadTasks()">Show More</button>
+
+    <script src="../static/main.js"></script>
 </body>
+
 </html>
