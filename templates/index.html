@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 pt-4 pb-3">
-                <img src="/static/printbutton.svg" alt="">
+                <img src="/static/printbutton.svg" alt="Print Button">
             </div>
         </nav>
     </div>
@@ -51,7 +51,7 @@
                         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Mira Musterfrau</td>
                         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">23.11.2020</td>
                         <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <div class="todo p-3 text-center">TODO</div>
+                            <div class="state-flag p-3 text-center">TODO</div>
                         </td>
                     </tr>
                 </div>
@@ -62,13 +62,12 @@
 
     <div class="row">
         <div class="col">
-
+            <button id="more-tasks-button" type="button" onclick="loadTasks()">Show More</button>
         </div>
     </div>
 
     <br>
-    <button id="more-tasks-button" type="button" onclick="loadTasks()">Show More</button>
-    <script src="/static/main.js"></script>
+    <script src="../static/main.js"></script>
 </body>
 
 </html>
