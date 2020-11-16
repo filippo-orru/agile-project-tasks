@@ -3,6 +3,7 @@ Agile Project Tasks
 
 # Run instructions
  - Install python3 (macos: `brew install python3`)
+ - Install nodejs
  - Install requirements: `python -m pip install -r requirements.txt` or `python3 -m pip install -r requirements.txt`
  - Install node modules: `npm ci`
  - if linux/macos:
@@ -14,3 +15,6 @@ Agile Project Tasks
  - else if windows:
    - start with `.\start.bat`
    - To reload: kill the script with control+c and restart it
+   
+# Dev instructions
+ To constantly auto-generate .css out of .scss files every time you apply a change, run watcher.bat (Windows), or watcher.sh (Mac and Linux).

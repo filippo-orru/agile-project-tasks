@@ -9,7 +9,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watcher": "npx sass --watch resources/scss/index.scss static/css/index.css && npx sass --watch resources/scss/print.scss static/css/print.css",
+    "css": "npx sass resources/scss/index.scss static/css/index.css && npx sass resources/scss/print.scss static/css/print.css"
   },
   "repository": {
     "type": "git",
