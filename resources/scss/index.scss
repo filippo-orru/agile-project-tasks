@@ -1,7 +1,3 @@
-.standardBody{
-    font-family: 'Archivo', sans-serif;
-}
-
 nav {
     background-color: #403D39;
 
@@ -25,42 +21,19 @@ nav {
 
 .Todo{
     background-color:#FF6B6B;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 10%;
 }
 
 .InProgress{
     background-color: #FFE66D;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 10%;
 }
 
 .Done{
     background-color: #4ECDC4;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 10%;
 }
 
 .row-template{
     display: none;
-}
-
-.buttonDiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.buttonInnerDiv{
-    border: 2px solid #50514F;
-    border-radius: 5px;
-}
-
-.showMore{
-    background: transparent;
-      border-color: transparent;
-      text-align: center;
-      outline: none;
-      color: #50514F;
-      padding: 2px 50px;
 }
