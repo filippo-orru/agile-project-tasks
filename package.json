@@ -5,14 +5,15 @@
   "main": "README.md",
   "dependencies": {
     "jquery": "^3.5.1",
+    "run-script-os": "^1.1.3",
     "sass": "^1.29.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watcher-win": "start npx sass --watch resources/scss/index.scss static/css/index.css && start npx sass --watch resources/scss/print.scss static/css/print.css",
+    "watcher": "run-script-os",
+    "watcher:win32": "start npx sass --watch resources/scss/index.scss static/css/index.css && start npx sass --watch resources/scss/print.scss static/css/print.css",
     "css": "npx sass resources/scss/index.scss static/css/index.css && npx sass resources/scss/print.scss static/css/print.css",
-    "watcher-mac": "open npx sass --watch resources/scss/index.scss static/css/index.css; open npx sass --watch resources/scss/print.scss static/css/print.css"
+    "watcher:darwin:linux": "open npx sass --watch resources/scss/index.scss static/css/index.css; open npx sass --watch resources/scss/print.scss static/css/print.css"
   },
   "repository": {
     "type": "git",
