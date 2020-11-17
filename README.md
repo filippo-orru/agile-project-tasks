@@ -17,4 +17,5 @@ Agile Project Tasks
    - To reload: kill the script with control+c and restart it
    
 # Dev instructions
- To constantly auto-generate .css out of .scss files every time you apply a change, run watcher.bat (Windows), or watcher.sh (Mac and Linux).
+ - To constantly auto-generate .css out of .scss files every time you apply a change, run watcher.bat (Windows), or watcher.sh (Mac and Linux).
+ - To manually compile scss, run `npm run css`

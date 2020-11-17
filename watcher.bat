@@ -1,1 +1,1 @@
-npm run watcher-win
+npm run watcher

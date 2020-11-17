@@ -1,1 +1,1 @@
-npm run watcher-mac
+npm run watcher
