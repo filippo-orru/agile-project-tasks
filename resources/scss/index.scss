@@ -7,29 +7,29 @@ nav {
     }
 }
 
-th{
+.th{
     font-size: 2vw;
     border-collapse: collapse;
     border-bottom: solid#403D39;
 }
 
-td{
+.td{
     font-size: 1.5vw;
     border-collapse: collapse;
     border-bottom: solid#403D39;
 }
 
-.todo{
+.Todo{
     background-color:#FF6B6B;
     border-radius: 10%;
 }
 
-.inprogress{
+.InProgress{
     background-color: #FFE66D;
     border-radius: 10%;
 }
 
-.done{
+.Done{
     background-color: #4ECDC4;
     border-radius: 10%;
 }
