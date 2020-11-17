@@ -7,60 +7,50 @@
     <title>Agile Manager</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-
-    <div class="row">
-        <nav class="container-fluid">
-            <div class="col-lg-10 col-md-10 col-sm-10 p-3 pl-5">
-                <a class="topnav">
+    <nav class="container-fluid">
+        <section class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-10 p-3 pl-5">
+                <h1 class="topnav">
                     <h1 id="heading">Agile Manager</h1>
-                </a>
+                </h1>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 pt-4 pb-3">
-                <img src="/static/printbutton.svg" alt="Print Button">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2 pt-4 pb-3">
+                <img src="../static/printbutton.svg" alt="Print Button">
             </div>
-        </nav>
-    </div>
+        </section>
+    </nav>
 
-    <section class="container-fluid pt-5 m-5">
-        <table id="task-table">
+    <section class="container-fluid p-5">
+        <div id="task-table">
+            <div class="row th">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6">Task name</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">Assigned to</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Due Date</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Progress</div>
+            </div>
 
-            <thead>
-                <div class="row">
-                    <tr>
-                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 pt-4 pb-4">Task name</th>
-                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Assigned to</th>
-                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">Due Date</th>
-                        <th class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">Progress</th>
-                    </tr>
+            <!-- classes "row-even" and "row-odd" have different background colors (get loaded through ajax) -->
+            <div class="row-template td p-4">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-6">Task 1</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">Mira Musterfrau</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">23.11.2020</div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                    <!-- special style for different flags is achieved by adding classes "InProgress", "Done" and "Todo" -->
+                    <div class="state-flag col-lg-2 col-md-2 col-sm-2 col-2">TODO</div>
                 </div>
-            </thead>
-
-            <tbody>
-                <!-- classes "row-even" and "row-odd" have different background colors (get loaded through ajax) -->
-                <div class="row-template">
-                    <tr>
-                        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pt-4 pb-4">Task 1</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">Mira Musterfrau</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">23.11.2020</td>
-                        <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                            <!-- special style for different flags is achieved by adding classes "InProgress", "Done" and "Todo" -->
-                            <div class="state-flag p-3 text-center">TODO</div>
-                        </td>
-                    </tr>
-                </div>
-            </tbody>
-
-        </table>
+            </div>
+        </div>
     </section>
 
-    <div class="row">
-        <div class="col">
+    <div class="container">
+        <div class="row">
             <button id="more-tasks-button" type="button" onclick="loadTasks()">Show More</button>
         </div>
     </div>
