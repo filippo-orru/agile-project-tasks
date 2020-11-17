@@ -7,7 +7,7 @@ $(function (){
 
 function loadTasks(){
     let config = {
-        'limit' : 2,
+        'limit' : 5,
         'offset' : offset,
     }
     $.ajax({
@@ -22,13 +22,14 @@ function loadTasks(){
             $.each(data.tasks, function (key, value){
                 var template = $('.row-template').clone();
                 template.removeClass('row-template');
+                template.removeClass('d-none');
                 if(even){
                   template.addClass('row-even');
                 }
                 else{
                     template.addClass('row-odd');
                 }
-                var templateItems = template.children('td');
+                var templateItems = template.children('div');
                 $(templateItems[0]).html(value.name);
                 $(templateItems[1]).html(value.assignee);
                 var dateString = value.dueByDate;
@@ -39,13 +40,13 @@ function loadTasks(){
                 var stateColumn = $(templateItems[3]).children('div');
                 $(stateColumn[0]).addClass(value.state);
                 $(stateColumn[0]).html(value.state);
-                $('tbody').append(template);
+                $('#task-table').append(template);
                 even = !even;
                 count++;
             })
             offset += count;
             if(!data.more){
-                $('#more-tasks-button').css('display', 'none');
+                $('.buttonDiv').css('display', 'none');
             }
         }
 
