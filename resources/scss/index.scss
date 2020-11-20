@@ -58,9 +58,28 @@ nav {
 
 .showMore{
     background: transparent;
-      border-color: transparent;
-      text-align: center;
-      outline: none;
-      color: #50514F;
-      padding: 2px 50px;
+    border-color: transparent;
+    text-align: center;
+    outline: none;
+    color: #50514F;
+    padding: 2px 50px;
+}
+.printBtnImage{
+  width: 100%;
+}
+@media (max-width: 576px){
+  .mobileTop {
+    #heading {
+        color: #F6F6F6;
+        font-size: 8vw;
+    }
+  }
+  .mobile-th{
+    display: none;
+  }
+  .mobile-task{
+    text-align: left;
+    border-bottom: solid #403D39;
+    border-width: 2px;
+  }
 }
