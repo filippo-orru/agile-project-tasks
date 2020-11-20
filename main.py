@@ -16,19 +16,26 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/print')
+def print():
+    return render_template('print.html')
+
+
 @app.route('/tasks')
 def tasks():
     offset = 0
     offsetStr = request.args.get('offset')
-    if offsetStr != '':
+    if offsetStr and offsetStr != '':
         offset = int(offsetStr)
 
     limit = 10
     limitStr = request.args.get('limit')
-    if limitStr != '':
+    if limitStr and limitStr != '':
         limit = int(limitStr)
 
-    if offset + limit <= len(testData):
+    if limit == -1:
+        subset = testData
+    elif offset + limit <= len(testData):
         subset = testData[offset:offset + limit]
     elif offset <= len(testData):
         subset = testData[offset:]

@@ -1,60 +1,45 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=, initial-scale=1.0">
-  <title>Print View</title>
-  <link rel="stylesheet" href="../resources/scss/print.scss">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Agile Manager - Print</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/css/print.css">
 </head>
 
-<body>
-  <header>
-    <p id="heading">Agile Manager</p>
-  </header>
+<body class="standardBody">
+  <section class="container-fluid p-5">
+    <div id="task-table">
+      <div class="row th">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">Task name</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">Assigned to</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Due Date</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Progress</div>
+      </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th class="task" scope="col">Task Name</th>
-        <th scope="col">Assigened to</th>
-        <th scope="col">Due Date</th>
-        <th scope="col" class="state">Progess State</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="task">test</td>
-        <td>test2</td>
-        <td>Date</td>
-        <td class="state">state</td>
-      </tr>
-      <tr>
-        <td class="task">test</td>
-        <td>test2</td>
-        <td>Date</td>
-        <td class="state">state</td>
-      </tr>
-      <tr>
-        <td class="task">test</td>
-        <td>test2</td>
-        <td>Date</td>
-        <td class="state">state</td>
-      </tr>
-      <tr>
-        <td class="task">test</td>
-        <td>test2</td>
-        <td>Date</td>
-        <td class="state">state</td>
-      </tr>
-      <tr>
-        <td class="task">test</td>
-        <td>test2</td>
-        <td>test3</td>
-        <td class="state">state</td>
-      </tr>
-    </tbody>
-  </table>
-  <script src="js/script.js"></script>
+      <!-- classes "row-even" and "row-odd" have different background colors (get loaded through ajax) -->
+      <div class="row d-none row-template td p-4">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">Task 1</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">Mira Musterfrau</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">23.11.2020</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+          <!-- special style for different flags is achieved by adding classes "InProgress", "Done" and "Todo" -->
+          <div class="col-lg-2 col-md-2 col-sm-2 col-2">TODO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <script src="/static/print.js"></script>
 </body>
+
 
 </html>
