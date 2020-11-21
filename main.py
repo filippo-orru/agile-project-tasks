@@ -7,6 +7,8 @@ with open('resources/test_data.json', 'r') as testDataFile:
     data = testDataFile.read()
 
 testData = json.loads(data)
+testData.sort(key=lambda task: task["dueByDate"])
+testData.sort(reverse=True, key=lambda task: task["state"])
 
 app = Flask(__name__)
 
