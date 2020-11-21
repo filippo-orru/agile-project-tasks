@@ -78,7 +78,7 @@ nav {
 }
 
 .taskText{
-    visibility: hidden;
+    display: none;
 }
 
 @media (max-width: 576px){
@@ -135,6 +135,6 @@ nav {
     padding: 1rem!important;
 }
 .taskText{
-    visibility: unset;
+    display: block;
 }
 }
