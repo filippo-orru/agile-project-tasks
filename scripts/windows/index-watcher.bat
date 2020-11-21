@@ -1,0 +1,1 @@
+npx sass --watch resources/scss/index.scss static/css/index.css

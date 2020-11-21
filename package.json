@@ -11,9 +11,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watcher": "run-script-os",
-    "watcher:win32": "start npx sass --watch resources/scss/index.scss static/css/index.css && start npx sass --watch resources/scss/print.scss static/css/print.css",
+    "watcher:win32": "start cmd /c \".\\scripts\\windows\\index-watcher.bat\" & start cmd /c \".\\scripts\\windows\\print-watcher.bat\"",
     "css": "npx sass resources/scss/index.scss static/css/index.css && npx sass resources/scss/print.scss static/css/print.css",
-    "watcher:darwin:linux": "open npx sass --watch resources/scss/index.scss static/css/index.css; open npx sass --watch resources/scss/print.scss static/css/print.css"
+    "watcher:darwin": "osascript scripts/macos/watcher-dispatcher.scpt `pwd`"
   },
   "repository": {
     "type": "git",

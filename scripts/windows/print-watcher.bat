@@ -1,0 +1,1 @@
+npx sass --watch resources/scss/print.scss static/css/print.css
