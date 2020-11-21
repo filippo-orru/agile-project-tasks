@@ -7,7 +7,9 @@ nav {
 
     #heading {
         color: #F6F6F6;
-        font-size: 4vw;
+        width: 43vw;
+        word-wrap: break-word;
+        font-size: 30px;
     }
 }
 
@@ -63,4 +65,8 @@ nav {
       outline: none;
       color: #50514F;
       padding: 2px 50px;
+}
+
+.printButton{
+    width: max(6vw, 50px);
 }
