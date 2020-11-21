@@ -79,11 +79,18 @@ nav {
 .printBtnImage{
   width: 100%;
 }
+
+.taskText{
+    visibility: hidden;
+}
+
 @media (max-width: 576px){
   .mobileTop {
     #heading {
         color: #F6F6F6;
-        font-size: 8vw;
+        width: 30vw;
+        word-wrap: break-word;
+        font-size: max(4vw ,30px);
     }
   }
   .mobile-th{
@@ -129,5 +136,8 @@ nav {
 }
   .p-5 {
     padding: 1rem!important;
+}
+.taskText{
+    visibility: unset;
 }
 }
