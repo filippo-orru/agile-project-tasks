@@ -10,7 +10,7 @@ function loadTasks(limit = 5) {
     }
     $.ajax({
         type: "GET",
-        url: baseUrl + '/tasks',
+        url: 'tasks',
         dataType: 'json',
         data: config,
         success: function (data) {
