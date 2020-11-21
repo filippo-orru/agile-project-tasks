@@ -5,6 +5,4 @@ node_modules/
 __pycache__
 .vs
 .vscode
-.idea/vcs.xml
-.idea/workspace.xml
-.idea/workspace.xml~Stashed changes
+.idea
