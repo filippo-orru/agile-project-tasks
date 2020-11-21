@@ -27,20 +27,23 @@ nav {
 
 .Todo{
     background-color:#FF6B6B;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 200px;
+    padding: 4%;
+    text-align: center;
 }
 
 .InProgress{
     background-color: #FFE66D;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 200px;
+    padding: 4%;
+    text-align: center;
 }
 
 .Done{
     background-color: #4ECDC4;
-    border-radius: 20px;
-    padding: 2px 50px;
+    border-radius: 200px;
+    padding: 4%;
+    text-align: center;
 }
 
 .row-template{
