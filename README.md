@@ -1,6 +1,9 @@
 # Agile Manager
 Agile Manager is a small web tool that lets you have a broad overview of given tasks and their progress state.
 
+# Deployed Version
+http://ffactory.ml/agile-project-tasks/
+
 # Run instructions
  - Install python3 (macos: `brew install python3`)
  - Install nodejs
