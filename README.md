@@ -1,5 +1,5 @@
-# agile-project-tasks
-Agile Project Tasks
+# Agile Manager
+Agile Manager is a small web tool that lets you have a broad overview of given tasks and their progress state.
 
 # Run instructions
  - Install python3 (macos: `brew install python3`)
@@ -19,3 +19,11 @@ Agile Project Tasks
 # Dev instructions
  - To constantly auto-generate .css out of .scss files every time you apply a change, run watcher.bat (Windows), or watcher.sh (Mac and Linux).
  - To manually compile scss, run `npm run css`
+ 
+# Developers
+ - Amann Anna-Caterina
+ - Buraczewska Diana
+ - Mühlbacher Jan
+ - Orru Filippo
+ - Toporsch Sebastian
+ - Weigl Tobias
