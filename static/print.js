@@ -1,4 +1,6 @@
-$(() => printSite());
+$(() => {
+    printSite();
+});
 
 function printSite() {
     let config = { 'limit': -1 }
@@ -39,6 +41,11 @@ function printSite() {
         },
         complete: () => {
             window.print();
+            window.addEventListener("afterprint", function() {
+                setTimeout(function (){
+                    window.close()
+                }, 500)
+            });
         },
     });
 }
