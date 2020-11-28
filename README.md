@@ -9,6 +9,7 @@ http://ffactory.ml/agile-project-tasks/
  - Install nodejs
  - Install requirements: `python -m pip install -r requirements.txt` or `python3 -m pip install -r requirements.txt`
  - Install node modules: `npm ci`
+ - Install sqlite3 if not pre-installed (eg. from https://www.sqlite.org/download.html)
  - if linux/macos:
    - `chmod a+x start.sh`
    - start the server with `./start.sh`

@@ -1,4 +1,4 @@
-export FLASK_APP=main.py
+export FLASK_APP=server/main.py
 while true
 do python3 -m flask run
 echo

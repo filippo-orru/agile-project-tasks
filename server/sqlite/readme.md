@@ -1,0 +1,1 @@
+The server creates the sqlite database in this folder.
