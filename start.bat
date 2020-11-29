@@ -1,2 +1,2 @@
-set FLASK_APP=server/main.py
+set FLASK_APP=main.py
 python -m flask run
