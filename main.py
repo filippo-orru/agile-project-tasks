@@ -57,4 +57,7 @@ def tasks_post():
 @app.route('/api/tasks/<id>', methods=["GET"])
 def tasks_get_id(id: str):
     task = collections.tasks.get(int(id))
-    return jsonify(task.toDict())
+    if task == None:
+        return "Not found", 404
+    else:
+        return jsonify(task.toDict())

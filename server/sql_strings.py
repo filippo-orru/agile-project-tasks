@@ -9,7 +9,7 @@ class SQLs:
         name NOT LIKE 'sqlite_%';
     """
 
-    create_table = "CREATE TABLE {}({});"
+    create_table = "CREATE TABLE IF NOT EXISTS {}({});"
 
     create_table__row_primary = "{} INTEGER PRIMARY KEY"
 
@@ -30,3 +30,9 @@ class SQLs:
     insert_row = "({})"
 
     count = "SELECT COUNT(*) FROM {}"
+
+    get_schema_version = 'SELECT version FROM schema WHERE name="{}"'
+
+    drop = "DROP TABLE {}"
+
+    insert_schema = 'INSERT INTO schema(name,version) VALUES("{0}","{1}") ON CONFLICT(name) DO UPDATE SET version={1};'

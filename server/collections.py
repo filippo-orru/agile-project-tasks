@@ -3,7 +3,6 @@ from server.abstract_collections import *
 
 
 class Task(CollectionItem):
-    id: int
     name: str
     description: str
     state: str
@@ -12,19 +11,9 @@ class Task(CollectionItem):
     createdBy: str
     dueByDate: str
 
-    schema: dict = {
-        'id': 'INTEGER',
-        'name': 'TEXT',
-        'description': 'TEXT',
-        'state': 'TEXT',
-        'assignee': 'TEXT',
-        'createdDate': 'TEXT',
-        'createdBy': 'TEXT',
-        'dueByDate': 'TEXT',
-    }
-
     def __init__(self, id, name, description, state, assignee, createdDate,
                  createdBy, dueByDate):
+        super().__init__(id)
         self.id = id
         self.name = name
         self.description = description
@@ -65,8 +54,20 @@ class Task(CollectionItem):
 
 
 class Tasks(AbstractCollection):
+    schema = Schema(version=2,
+                    body={
+                        'id': 'INTEGER',
+                        'name': 'TEXT',
+                        'description': 'TEXT',
+                        'state': 'TEXT',
+                        'assignee': 'TEXT',
+                        'createdDate': 'TEXT',
+                        'createdBy': 'TEXT',
+                        'dueByDate': 'TEXT',
+                    })
+
     def __init__(self, database_connection: DatabaseConnection):
-        super().__init__('tasks', 'resources/test_data.csv', Task.schema,
+        super().__init__('tasks', 'resources/test_data.csv', self.schema, Task,
                          database_connection)
 
     def get_many(self, offset: int, limit: int):
