@@ -21,28 +21,34 @@ class DatabaseConnection:
 
         self.collections = Collections(self.cursor)
 
-        db_tables = self.cursor.execute(SQLs.list_tables).fetchall()
+        db_tables = self.__execute_sql(SQLs.list_tables).fetchall()
         for table in self.collections.all():
             if (table.name, ) not in db_tables:
                 self.__create_table(table)
-            if self.cursor.execute(SQLs.count.format(
+
+            if self.__execute_sql(SQLs.count.format(
                     table.name)).fetchone() == (0, ):
                 self.__insert_initial_data(table)
 
+    def __execute_sql(self, sql):
+        val = self.cursor.execute(sql)
+        self.connection.commit()
+        return val
+
     def __create_table(self, table: AbstractCollection):
         items = table.schema.items()
-        columns = ""
+        columns_sql = ""
         for index, (key, value) in enumerate(items):
             if index == 0:
-                columns += SQLs.create_table__row_primary.format(key)
+                columns_sql += SQLs.create_table__row_primary.format(key)
             else:
-                columns += SQLs.create_table__row.format(key, value)
+                columns_sql += SQLs.create_table__row.format(key, value)
 
             if index < len(items) - 1:
-                columns += ','
+                columns_sql += ','
 
-        sql = SQLs.create_table.format(table.name, columns)
-        self.cursor.execute(sql)
+        sql = SQLs.create_table.format(table.name, columns_sql)
+        self.__execute_sql(sql)
 
     def __insert_initial_data(self, table: AbstractCollection):
         # Read test data
@@ -57,10 +63,7 @@ class DatabaseConnection:
 
             sql_row = ""
             for index, value in enumerate(obj):
-                if ' ' in value:  # quote strings that include spaces
-                    sql_row += '"{}"'.format(value)
-                else:
-                    sql_row += value
+                sql_row += '"{}"'.format(value)
 
                 if index < len(obj) - 1:
                     sql_row += ","
@@ -69,7 +72,7 @@ class DatabaseConnection:
             if obj_index < len(data) - 1:
                 sql_rows += ","
 
-        sql = SQLs.insert.format(table.name, list(table.schema.keys()),
-                                 sql_rows)
-        self.cursor.execute(sql)
-        self.connection.commit()
+        sql = SQLs.insert.format(
+            table.name, table.get_columns_sql(include_primary_key=True),
+            sql_rows)
+        self.__execute_sql(sql)

@@ -9,7 +9,7 @@ class SQLs:
         name NOT LIKE 'sqlite_%';
     """
 
-    create_table = "CREATE TABLE IF NOT EXISTS {}({});"
+    create_table = "CREATE TABLE {}({});"
 
     create_table__row_primary = "{} INTEGER PRIMARY KEY"
 

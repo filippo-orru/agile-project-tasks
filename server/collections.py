@@ -87,17 +87,17 @@ class AbstractCollection(ABC):
     def get(self, id: int) -> Task:
         sql = SQLs.select.format(self.name) + SQLs.where.format(
             "id = {}".format(id))
-        return self.cursor.execute(sql).fetchone()
+        return self.__execute_sql(sql).fetchone()
 
     def insert(self, item: CollectionItem) -> Task:
         sql = SQLs.insert.format(self.name, self.get_columns_sql(),
                                  item.toSql())
-        self.cursor.execute(sql)
+        self.__execute_sql(sql)
         return self.get(self.cursor.lastrowid)
 
-    def get_columns_sql(self) -> str:
+    def get_columns_sql(self, include_primary_key: bool = False) -> str:
         columns = list(self.schema.keys())
-        columns.pop(columns.index('id'))
+        if not include_primary_key: columns.pop(columns.index('id'))
         return str(columns)[1:-1].replace("'", '')
 
 
@@ -107,11 +107,11 @@ class Tasks(AbstractCollection):
                          cursor)
 
     def get_many(self, offset: int, limit: int):
-        all_tasks_count = self.cursor.execute(SQLs.count.format(
+        all_tasks_count = self.__execute_sql(SQLs.count.format(
             self.name)).fetchone()[0]
 
         # yapf: disable
-        tasks = self.cursor.execute(
+        tasks = self.__execute_sql(
             SQLs.select.format(self.name) +
             SQLs.order_by.format('state DESC, dueByDate ASC') +
             SQLs.limit.format(str(limit)) +

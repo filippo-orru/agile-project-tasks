@@ -3,7 +3,7 @@
 from server.collections import Task
 from flask import Flask, jsonify, request
 from flask.templating import render_template
-from server.db_conn import DatabaseConnection
+from server.database_connection import DatabaseConnection
 
 database = DatabaseConnection()
 
