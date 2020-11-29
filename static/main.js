@@ -4,16 +4,18 @@ var offset = 0;
 $(() => loadTasks());
 
 function loadTasks(limit = 5) {
+    console.log("loading tasks");
     let config = {
         'limit': limit,
         'offset': offset,
     }
     $.ajax({
         type: "GET",
-        url: 'tasks',
+        url: 'api/tasks',
         dataType: 'json',
         data: config,
         success: function (data) {
+            console.log("rendering tasks");
             var even;
             even = offset % 2 == 0;
             var count = 0;
@@ -45,6 +47,9 @@ function loadTasks(limit = 5) {
             if (!data.more) {
                 $('.buttonDiv').css('display', 'none');
             }
+        },
+        error: function (e){
+            console.log("loading failed");
         }
 
     });
