@@ -1,12 +1,5 @@
-from sqlite3.dbapi2 import Cursor
 from server.sql_strings import SQLs
-from abc import ABC, abstractmethod
-
-
-class CollectionItem(ABC):
-    @abstractmethod
-    def toSql():
-        pass
+from server.abstract_collections import *
 
 
 class Task(CollectionItem):
@@ -21,13 +14,13 @@ class Task(CollectionItem):
 
     schema: dict = {
         'id': 'INTEGER',
-        'name': 'STRING',
-        'description': 'STRING',
-        'state': 'STRING',
-        'assignee': 'STRING',
-        'createdDate': 'STRING',
-        'createdBy': 'STRING',
-        'dueByDate': 'STRING',
+        'name': 'TEXT',
+        'description': 'TEXT',
+        'state': 'TEXT',
+        'assignee': 'TEXT',
+        'createdDate': 'TEXT',
+        'createdBy': 'TEXT',
+        'dueByDate': 'TEXT',
     }
 
     def __init__(self, id, name, description, state, assignee, createdDate,
@@ -58,7 +51,7 @@ class Task(CollectionItem):
                 self.dueByDate,
             ))
 
-    def serialize(self):
+    def toDict(self):
         return {
             "id": self.id,
             "name": self.name,
@@ -71,47 +64,17 @@ class Task(CollectionItem):
         }
 
 
-class AbstractCollection(ABC):
-    name: str
-    initial_data_path: str
-    schema: dict  # 'id' column is always used as primary key
-    cursor: Cursor
-
-    def __init__(self, name: str, initial_data_path: str, schema: dict,
-                 cursor):
-        self.name = name
-        self.initial_data_path = initial_data_path
-        self.schema = schema
-        self.cursor = cursor
-
-    def get(self, id: int) -> Task:
-        sql = SQLs.select.format(self.name) + SQLs.where.format(
-            "id = {}".format(id))
-        return self.__execute_sql(sql).fetchone()
-
-    def insert(self, item: CollectionItem) -> Task:
-        sql = SQLs.insert.format(self.name, self.get_columns_sql(),
-                                 item.toSql())
-        self.__execute_sql(sql)
-        return self.get(self.cursor.lastrowid)
-
-    def get_columns_sql(self, include_primary_key: bool = False) -> str:
-        columns = list(self.schema.keys())
-        if not include_primary_key: columns.pop(columns.index('id'))
-        return str(columns)[1:-1].replace("'", '')
-
-
 class Tasks(AbstractCollection):
-    def __init__(self, cursor: Cursor):
+    def __init__(self, database_connection: DatabaseConnection):
         super().__init__('tasks', 'resources/test_data.csv', Task.schema,
-                         cursor)
+                         database_connection)
 
     def get_many(self, offset: int, limit: int):
-        all_tasks_count = self.__execute_sql(SQLs.count.format(
-            self.name)).fetchone()[0]
+        all_tasks_count = self.database_connection.execute_sql(
+            SQLs.count.format(self.name)).fetchone()[0]
 
         # yapf: disable
-        tasks = self.__execute_sql(
+        tasks = self.database_connection.execute_sql(
             SQLs.select.format(self.name) +
             SQLs.order_by.format('state DESC, dueByDate ASC') +
             SQLs.limit.format(str(limit)) +
@@ -119,6 +82,7 @@ class Tasks(AbstractCollection):
         ).fetchall()
         # yapf: enable
 
+        tasks = list(map(lambda tuple: Task(*tuple), tasks))
         more = all_tasks_count > limit + offset
         return tasks, more
 
@@ -126,8 +90,8 @@ class Tasks(AbstractCollection):
 class Collections:
     tasks: Tasks
 
-    def __init__(self, cursor):
-        self.tasks = Tasks(cursor)
+    def __init__(self, database_connection: DatabaseConnection):
+        self.tasks = Tasks(database_connection)
 
     def all(self):
         return [self.tasks]

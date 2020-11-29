@@ -1,11 +1,13 @@
 # Tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
-from server.collections import Task
+from server.collections import Collections, Task
 from flask import Flask, jsonify, request
 from flask.templating import render_template
 from server.database_connection import DatabaseConnection
 
-database = DatabaseConnection()
+db = DatabaseConnection()
+
+collections = Collections(db)
 
 app = Flask(__name__)
 
@@ -32,7 +34,9 @@ def tasks_get():
     if limitStr and limitStr != '':
         limit = int(limitStr)
 
-    tasks, more = database.collections.tasks.get_many(offset, limit)
+    tasks, more = collections.tasks.get_many(offset, limit)
+
+    tasks = list(map(lambda task: task.toDict(), tasks))
 
     return jsonify({
         "offset": offset,
@@ -45,12 +49,12 @@ def tasks_get():
 @app.route('/api/tasks', methods=["POST"])
 def tasks_post():
     task = Task.fromJson(request.json)
-    task = database.collections.tasks.insert(task)
+    task = collections.tasks.insert(task)
 
-    return jsonify(task)
+    return jsonify(task.toDict())
 
 
 @app.route('/api/tasks/<id>', methods=["GET"])
 def tasks_get_id(id: str):
-    task = database.collections.tasks.get(int(id))
-    return jsonify(task.serialize())
+    task = collections.tasks.get(int(id))
+    return jsonify(task.toDict())
