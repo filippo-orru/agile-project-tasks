@@ -1,7 +1,7 @@
 # Tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
 from server.collections import Collections, Task
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect
 from flask.templating import render_template
 from server.database_connection import DatabaseConnection
 
@@ -20,6 +20,11 @@ def home():
 @app.route('/print')
 def print():
     return render_template('print.html')
+
+
+@app.route('/add_task')
+def add_task():
+    return render_template('add_task.html')
 
 
 @app.route('/api/tasks', methods=["GET"])
@@ -57,7 +62,7 @@ def tasks_post():
 @app.route('/api/tasks/<id>', methods=["GET"])
 def tasks_get_id(id: str):
     task = collections.tasks.get(int(id))
-    if task == None:
+    if task is None:
         return "Not found", 404
     else:
         return jsonify(task.toDict())
