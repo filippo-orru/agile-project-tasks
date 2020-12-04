@@ -24,6 +24,10 @@ http://ffactory.ml/agile-project-tasks/
  - To constantly auto-generate .css out of .scss files every time you apply a change, run watcher.bat (Windows), or watcher.sh (Mac and Linux).
  - To manually compile scss, run `npm run css`
  
+# Used libraries
+ - Bootstrap 4 ([documentation](https://getbootstrap.com/docs/4.5/getting-started/introduction/))
+ - Bootstrap Validator ([documentation](http://1000hz.github.io/bootstrap-validator/?underwear=on))
+ 
 # Developers
  - Amann Anna-Caterina
  - Buraczewska Diana
