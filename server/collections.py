@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from sqlite3.dbapi2 import Date
 from server.sql_strings import SQLs
 from server.abstract_collections import *
@@ -27,9 +27,40 @@ class Task(CollectionItem):
 
     def fromJson(json):
         createdDate = date.today().strftime("%Y%m%d")
-        return Task(0, json["name"], json["description"], "TODO",
-                    json["assignee"], createdDate, json["createdBy"],
-                    json["dueByDate"])
+        return Task(
+                    0,
+                    json["name"],
+                    json["description"],
+                    "Todo",
+                    json["assignee"],
+                    createdDate,
+                    json["createdBy"],
+                    json["dueByDate"]
+                )
+    
+    '''
+    Returns 'success' when a Task is valid.
+    Otherwise returns an error message
+    '''
+    def validate(self):
+        # Empty
+        if (self.name == ""):
+            return "nameEmpty"
+        if (self.dueByDate == ""):
+            return "dueByDateEmpty"
+        if (self.createdBy == ""):
+            return "createdByEmpty"
+        if (self.assignee == ""):
+            return "assigneeEmpty"
+        if (self.description == ""):
+            return "descriptionEmpty"
+        # Invalid
+        try:
+            datetime.strptime(self.dueByDate, '%Y%m%d')
+        except ValueError:
+            return "dueByDateInvalid"
+        # Success
+        return "success"
 
     def toSql(self):
         return SQLs.insert_row.format(
