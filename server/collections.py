@@ -1,5 +1,7 @@
 from datetime import date, datetime
 from sqlite3.dbapi2 import Date
+
+from werkzeug.utils import escape
 from server.sql_strings import SQLs
 from server.abstract_collections import *
 
@@ -13,6 +15,19 @@ class Task(CollectionItem):
     createdBy: str
     dueByDate: str
 
+    '''
+    Escapes potentially dangerous characters
+    '''
+    def escape(string):        
+        saveString = ""
+        
+        for x in string:
+            if not (x.isalnum() or x.isspace()):
+                saveString += "\\"
+            saveString += x
+            
+        return saveString
+    
     def __init__(self, id, name, description, state, assignee, createdDate,
                  createdBy, dueByDate):
         super().__init__(id)
@@ -29,13 +44,13 @@ class Task(CollectionItem):
         createdDate = date.today().strftime("%Y%m%d")
         return Task(
                     0,
-                    json["name"],
-                    json["description"],
+                    escape(json["name"]),
+                    escape(json["description"]),
                     "Todo",
-                    json["assignee"],
+                    escape(json["assignee"]),
                     createdDate,
-                    json["createdBy"],
-                    json["dueByDate"]
+                    escape(json["createdBy"]),
+                    escape(json["dueByDate"])
                 )
     
     '''
