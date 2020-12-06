@@ -9,12 +9,12 @@ nav {
         color: #F6F6F6;
         width: 30vw;
         word-wrap: break-word;
-        font-size: max(4vw ,30px);
+        font-size: calc(max(4vw ,30px));
     }
 }
 
 .th{
-    font-size: 2vw;
+    font-size: 3vh;
     border-collapse: collapse;
     border-bottom: solid#403D39;
 }
@@ -68,7 +68,7 @@ nav {
 .showMore{
     background: transparent;
   .printButton{
-    width: max(1vw, 1px);
+    width: calc(max(1vw, 1px));
 }
     border-color: transparent;
     text-align: center;
@@ -81,13 +81,18 @@ nav {
     display: none;
 }
 
+input[type="text"]:hover, input[type="date"]:hover {
+  background-color: #f5f5f5;
+  border: 1px solid;
+}
+
 @media (max-width: 576px){
   .mobileTop {
     #heading {
         color: #F6F6F6;
         width: 40vw;
         word-wrap: break-word;
-        font-size: max(4vw ,30px);
+        font-size: calc(max(4vw ,30px));
     }
   }
   .mobile-th{
