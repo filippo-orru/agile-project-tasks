@@ -26,7 +26,7 @@ http://ffactory.ml/agile-project-tasks/
  
 # Used libraries
  - Bootstrap 4 ([documentation](https://getbootstrap.com/docs/4.5/getting-started/introduction/))
- - Bootstrap Validator ([documentation](http://1000hz.github.io/bootstrap-validator/?underwear=on))
+ - Bootstrap Validator ([documentation](http://1000hz.github.io/bootstrap-validator/?underwear=on)) to use, implement validator.js in html
  
 # Developers
  - Amann Anna-Caterina
