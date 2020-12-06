@@ -1,3 +1,5 @@
+from datetime import date
+from sqlite3.dbapi2 import Date
 from server.sql_strings import SQLs
 from server.abstract_collections import *
 
@@ -24,16 +26,10 @@ class Task(CollectionItem):
         self.dueByDate = dueByDate
 
     def fromJson(json):
-        return Task(
-                json["id"],
-                json["name"],
-                json["description"],
-                json["state"],
-                json["assignee"],
-                json["createdDate"],
-                json["createdBy"],
-                json["dueByDate"]
-                )
+        createdDate = date.today().strftime("%Y%m%d")
+        return Task(0, json["name"], json["description"], "TODO",
+                    json["assignee"], createdDate, json["createdBy"],
+                    json["dueByDate"])
 
     def toSql(self):
         return SQLs.insert_row.format(
