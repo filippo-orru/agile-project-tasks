@@ -7,7 +7,7 @@ function printSite() {
 
     $.ajax({
         type: 'GET',
-        url: 'tasks',
+        url: 'api/tasks',
         dataType: 'json',
         data: config,
         success: function (data) {
