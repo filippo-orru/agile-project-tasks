@@ -24,9 +24,16 @@ class Task(CollectionItem):
         self.dueByDate = dueByDate
 
     def fromJson(json):
-        return Task(json["id"], json["name"], json["description"],
-                    json["state"], json["assignee"], json["createdDate"],
-                    json["createdBy"], json["dueByDate"])
+        return Task(
+                json["id"],
+                json["name"],
+                json["description"],
+                json["state"],
+                json["assignee"],
+                json["createdDate"],
+                json["createdBy"],
+                json["dueByDate"]
+                )
 
     def toSql(self):
         return SQLs.insert_row.format(

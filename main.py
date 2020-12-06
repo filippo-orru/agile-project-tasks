@@ -1,5 +1,6 @@
 # Tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
+from server.validator import Validator
 from server.collections import Collections, Task
 from flask import Flask, jsonify, request, redirect
 from flask.templating import render_template
@@ -52,11 +53,17 @@ def tasks_get():
 
 
 @app.route('/api/tasks', methods=["POST"])
-def tasks_post():
+def tasks_post():    
     task = Task.fromJson(request.json)
-    task = collections.tasks.insert(task)
-
-    return jsonify(task.toDict())
+    # returnMsg = Validator.task_validate(task)
+    
+    # if returnMsg == "success":
+    #     returnMsg = "succ"
+    # # task = collections.tasks.insert(task)
+    
+    return task
+    # return returnMsg
+    # # return jsonify(task.toDict())
 
 
 @app.route('/api/tasks/<id>', methods=["GET"])

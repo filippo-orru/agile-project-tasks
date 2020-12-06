@@ -1,25 +1,35 @@
 function addTask() {
-    let name = document.getElementById('form-name');
-    let dueByDate = document.getElementById('form-dueByDate');
-    let createdBy = document.getElementById('form-createdBy');
-    let assignee = document.getElementById('form-assignee');
-    let description = document.getElementById('form-description');
+
+    let name = document.getElementById('form-name').value;
+    let dueByDate = document.getElementById('form-dueByDate').value;
+    let createdBy = document.getElementById('form-createdBy').value;
+    let assignee = document.getElementById('form-assignee').value;
+    let description = document.getElementById('form-description').value;
     let jsonBody = {
         'name': name,
-        'dueByDate': dueByDate,
+        'dueByDate': dueByDate.toString().replaceAll("-", ""),
         'createdBy': createdBy,
         'assignee': assignee,
         'description': description,
     }
 
-    let request = XMLHttpRequest();
-    request.addEventListener("load", function () {
-        request.statusCode
-    });
-    request.open("POST", "api/tasks");
-    request.send();
+    console.log(jsonBody);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "api/tasks", true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onreadystatechange = function(){
+        if(request.readyState === 4){
+            console.log(request.response);
+        }
+    };
+    let data = JSON.stringify(jsonBody);
+    request.send(data);
 }
 
 let addTaskButton = document.getElementById('add-task-button');
 
-addTaskButton.addEventListener('click', () => addTask());
+addTaskButton.addEventListener('click', function(event){
+    event.preventDefault();
+    addTask();
+});
