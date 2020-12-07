@@ -41,12 +41,12 @@
   <form class="container ">
     <div class="row ">
       <div class="form-group col-md-6 col-12">
-        <label>Task name</label>
+        <label for="name">Task name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Example name">
       </div>
 
       <div class="form-group col-md-6 col-12">
-        <label>Due by date</label>
+        <label for="dueByDate">Due by date</label>
         <input type="date" class="form-control" id="dueByDate" name="dueByDate" placeholder="20.12.2020">
       </div>
 
@@ -54,21 +54,21 @@
 
     <div class="row ">
       <div class="form-group col-md-6 col-12 ">
-        <label>Created by</label>
+        <label for="createdBy">Created by</label>
         <input type="text" class="form-control" id="createdBy" name="createdBy" placeholder="John Doe">
       </div>
 
       <div class="form-group col-md-6 col-12 ">
-        <label>Assigned to</label>
+        <label for="assignee">Assigned to</label>
         <input type="text" class="form-control" id="assignee" name="assignee" placeholder="Jane Doe">
       </div>
     </div>
 
     <div class="form-group col-12 p-0">
-      <label>Description</label>
+      <label for="description">Description</label>
 
-      <input type="text" class="form-control" id="description" name="description"
-        placeholder="This is an example description for a task">
+      <textarea type="text" class="form-control" id="description" name="description"
+                placeholder="This is an example description for a task"></textarea>
     </div>
 
     <div class="container text-center buttonDiv">
