@@ -42,6 +42,11 @@ function handleResponse(response) {
       console.log(response);
       document.getElementById("form-dueByDate").style.borderColor = "#FF0000";
       break;
+
+    case "dueByDateInPast":
+      console.log(response);
+      document.getElementById("form-dueByDate").style.borderColor = "#FF0000";
+      break;
     // Success
 
     case "success":

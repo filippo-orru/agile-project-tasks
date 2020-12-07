@@ -1,4 +1,4 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from sqlite3.dbapi2 import Date
 
 from werkzeug.utils import escape
@@ -74,6 +74,8 @@ class Task(CollectionItem):
             datetime.strptime(self.dueByDate, '%Y%m%d')
         except ValueError:
             return "dueByDateInvalid"
+        if self.dueByDate < self.createdDate:
+            return "dueByDateInPast"
         # Success
         return "success"
 
