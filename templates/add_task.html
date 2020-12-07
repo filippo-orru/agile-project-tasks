@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Archivo&display=swap" rel="stylesheet">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../static/css/index.css">
+  <link rel="stylesheet" href="static/css/index.css">
 </head>
 
 <body class="standardBody">
@@ -27,8 +27,7 @@
 
       </div>
       <div class="col-lg-2 col-md-2 col-sm-3 col-4 pt-4 pb-3">
-        <a href="print.html" target="_blank"><img class="printButton" src="../static/printbutton.svg"
-            alt="Print Button"></a>
+        <a href="print.html" target="_blank"><img class="printButton" src="static/printbutton.svg" alt="Print Button"></a>
       </div>
     </section>
   </nav>
@@ -36,10 +35,15 @@
   <div class="container pt-5">
     <div class="col-md-4 col-sm-6 col-9 pl-0 pb-2">
       <p class="th">Task Information</p>
+  <form>
+
+    <div class="form-group">
+      <label>Task name</label>
+      <input type="text" class="form-control" id="form-name" name="name" placeholder="Example name">
     </div>
   </div>
 
-  <form action="/api/tasks" method="POST" class="container ">
+  <form class="container ">
     <div class="row ">
       <div class="form-group col-md-6 col-12">
         <label>Task name</label>
@@ -67,16 +71,20 @@
 
     <div class="form-group col-12 p-0">
       <label>Description</label>
+
       <input type="text" class="form-control" id="description" name="description"
         placeholder="This is an example description for a task">
     </div>
 
     <div class="container text-center buttonDiv">
       <div class="row buttonInnerDiv">
-        <button type="submit" class="showMore" id="more-tasks-button">Create task</button>
+        <button type="submit" class="showMore" id="add-task-button">Create task</button>
       </div>
     </div>
   </form>
+
+<script src="static/add_task.js"></script>
+
 </body>
 
 </html>

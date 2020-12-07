@@ -1,5 +1,6 @@
 # Tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
+from werkzeug.utils import escape
 from server.collections import Collections, Task
 from flask import Flask, jsonify, request, redirect
 from flask.templating import render_template
@@ -53,10 +54,14 @@ def tasks_get():
 
 @app.route('/api/tasks', methods=["POST"])
 def tasks_post():
-    task = Task.fromJson(request.json)
-    task = collections.tasks.insert(task)
+    task = Task.fromJson(request.json)    
+    returnMsg = task.validate()
 
-    return jsonify(task.toDict())
+    if returnMsg == "success":
+        task = collections.tasks.insert(task)
+
+    return returnMsg
+    # return jsonify(task.toDict())
 
 
 @app.route('/api/tasks/<id>', methods=["GET"])

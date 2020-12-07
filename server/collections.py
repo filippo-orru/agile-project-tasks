@@ -1,3 +1,7 @@
+from datetime import date, datetime, timedelta
+from sqlite3.dbapi2 import Date
+
+from werkzeug.utils import escape
 from server.sql_strings import SQLs
 from server.abstract_collections import *
 
@@ -11,6 +15,19 @@ class Task(CollectionItem):
     createdBy: str
     dueByDate: str
 
+    '''
+    Escapes potentially dangerous characters
+    '''
+    def escape(string):        
+        saveString = ""
+        
+        for x in string:
+            if not (x.isalnum() or x.isspace()):
+                saveString += "\\"
+            saveString += x
+            
+        return saveString
+    
     def __init__(self, id, name, description, state, assignee, createdDate,
                  createdBy, dueByDate):
         super().__init__(id)
@@ -24,9 +41,43 @@ class Task(CollectionItem):
         self.dueByDate = dueByDate
 
     def fromJson(json):
-        return Task(json["id"], json["name"], json["description"],
-                    json["state"], json["assignee"], json["createdDate"],
-                    json["createdBy"], json["dueByDate"])
+        createdDate = date.today().strftime("%Y%m%d")
+        return Task(
+                    0,
+                    escape(json["name"]),
+                    escape(json["description"]),
+                    "Todo",
+                    escape(json["assignee"]),
+                    createdDate,
+                    escape(json["createdBy"]),
+                    escape(json["dueByDate"])
+                )
+    
+    '''
+    Returns 'success' when a Task is valid.
+    Otherwise returns an error message
+    '''
+    def validate(self):
+        # Empty
+        if (self.name == ""):
+            return "nameEmpty"
+        if (self.dueByDate == ""):
+            return "dueByDateEmpty"
+        if (self.createdBy == ""):
+            return "createdByEmpty"
+        if (self.assignee == ""):
+            return "assigneeEmpty"
+        if (self.description == ""):
+            return "descriptionEmpty"
+        # Invalid
+        try:
+            datetime.strptime(self.dueByDate, '%Y%m%d')
+        except ValueError:
+            return "dueByDateInvalid"
+        if self.dueByDate < self.createdDate:
+            return "dueByDateInPast"
+        # Success
+        return "success"
 
     def toSql(self):
         return SQLs.insert_row.format(
