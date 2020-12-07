@@ -4,42 +4,42 @@ function handleResponse(response) {
     // (wie Frontend-Validation)
 
     console.clear();
-    document.getElementById("form-name").style.borderColor = "#FFFFFF";
-    document.getElementById("form-dueByDate").style.borderColor = "#FFFFFF";
-    document.getElementById("form-createdBy").style.borderColor = "#FFFFFF";
-    document.getElementById("form-assignee").style.borderColor = "#FFFFFF";
-    document.getElementById("form-description").style.borderColor = "#FFFFFF";
+    document.getElementById("name").style.borderColor = "#FFFFFF";
+    document.getElementById("dueByDate").style.borderColor = "#FFFFFF";
+    document.getElementById("createdBy").style.borderColor = "#FFFFFF";
+    document.getElementById("assignee").style.borderColor = "#FFFFFF";
+    document.getElementById("description").style.borderColor = "#FFFFFF";
 
     switch (response) {
         // Empty
         case "nameEmpty":
             console.log(response);
-            document.getElementById("form-name").style.borderColor = "#FF0000";
+            document.getElementById("name").style.borderColor = "#FF0000";
             break;
         case "dueByDateEmpty":
             console.log(response);
-            document.getElementById("form-dueByDate").style.borderColor = "#FF0000";
+            document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         case "createdByEmpty":
             console.log(response);
-            document.getElementById("form-createdBy").style.borderColor = "#FF0000";
+            document.getElementById("createdBy").style.borderColor = "#FF0000";
             break;
         case "assigneeEmpty":
             console.log(response);
-            document.getElementById("form-assignee").style.borderColor = "#FF0000";
+            document.getElementById("assignee").style.borderColor = "#FF0000";
             break;
         case "descriptionEmpty":
             console.log(response);
-            document.getElementById("form-description").style.borderColor = "#FF0000";
+            document.getElementById("description").style.borderColor = "#FF0000";
             break;
         // Invalid
         case "dueByDateInvalid":
             console.log(response);
-            document.getElementById("form-dueByDate").style.borderColor = "#FF0000";
+            document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         case "dueByDateInPast":
             console.log(response);
-            document.getElementById("form-dueByDate").style.borderColor = "#FF0000";
+            document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         // Success
         case "success":
@@ -52,11 +52,11 @@ function handleResponse(response) {
 
 function addTask() {
 
-    let name = document.getElementById('form-name').value;
-    let dueByDate = document.getElementById('form-dueByDate').value;
-    let createdBy = document.getElementById('form-createdBy').value;
-    let assignee = document.getElementById('form-assignee').value;
-    let description = document.getElementById('form-description').value;
+    let name = document.getElementById('name').value;
+    let dueByDate = document.getElementById('dueByDate').value;
+    let createdBy = document.getElementById('createdBy').value;
+    let assignee = document.getElementById('assignee').value;
+    let description = document.getElementById('description').value;
     let jsonBody = {
         'name': name,
         'dueByDate': dueByDate.toString().replaceAll("-", ""),
