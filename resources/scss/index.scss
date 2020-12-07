@@ -126,48 +126,23 @@ input[type="text"]:hover, input[type="date"]:hover {
   .InProgress{
     background-color: #FFE66D;
   }
-}
-.mobile-th{
-  display: none;
-}
-.mobile-task{
-  text-align: left;
-  border-bottom: solid #403D39;
-  border-width: 2px;
-}
-.td{
-  font-size: 3.25vw;
-  border-collapse: collapse;
-  border-bottom-width: thin;
-  border-bottom-color: #403D39;
-}
-.state-flag{
-  border-radius: 20px;
-}
-.mobile-sf-container{
-  padding-left: 0;
-}
-.Todo{
-  background-color:#FF6B6B;
-}
-.InProgress{
-  background-color: #FFE66D;
+  .Done{
+    background-color: #4ECDC4;
+  }
+  p{
+    margin-top: 0;
+    margin-bottom: 0rem;
+    font-size: 200%;
+  }
+  .p-4 {
+    padding: 0.5rem!important;
+  }
+  .p-5 {
+    padding: 1rem!important;
+  }
+  .taskText{
+    display: block;
+  }
 }
 
-.Done{
-  background-color: #4ECDC4;
-}
-p{
-  margin-top: 0;
-  margin-bottom: 0rem;
-  font-size: 200%;
-}
-.p-4 {
-  padding: 0.5rem!important;
-}
-.p-5 {
-  padding: 1rem!important;
-}
-.taskText{
-  display: block;
-}
+
