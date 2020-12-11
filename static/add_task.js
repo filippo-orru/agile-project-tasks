@@ -36,7 +36,7 @@ function handleResponse(response) {
             break;
         // Success
         case "success":
-            window.open("../?code=" + request.status, "_self");
+            window.open("../?success=" + (request === "success"), "_self");
             break;
         default:
             console.log("Yo, wtf?!");
