@@ -3,7 +3,7 @@ function handleResponse(response) {
     // TODO: Mit Bootstrap einheitlich gestallten
     // (wie Frontend-Validation)
 
-    console.clear();
+    console.log(response);
     document.getElementById("name").style.borderColor = "#FFFFFF";
     document.getElementById("dueByDate").style.borderColor = "#FFFFFF";
     document.getElementById("createdBy").style.borderColor = "#FFFFFF";
@@ -13,37 +13,30 @@ function handleResponse(response) {
     switch (response) {
         // Empty
         case "nameEmpty":
-            console.log(response);
             document.getElementById("name").style.borderColor = "#FF0000";
             break;
         case "dueByDateEmpty":
-            console.log(response);
             document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         case "createdByEmpty":
-            console.log(response);
             document.getElementById("createdBy").style.borderColor = "#FF0000";
             break;
         case "assigneeEmpty":
-            console.log(response);
             document.getElementById("assignee").style.borderColor = "#FF0000";
             break;
         case "descriptionEmpty":
-            console.log(response);
             document.getElementById("description").style.borderColor = "#FF0000";
             break;
         // Invalid
         case "dueByDateInvalid":
-            console.log(response);
             document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         case "dueByDateInPast":
-            console.log(response);
             document.getElementById("dueByDate").style.borderColor = "#FF0000";
             break;
         // Success
         case "success":
-            console.log("yey");
+            window.open("../", "_self");
             break;
         default:
             console.log("Yo, wtf?!");
