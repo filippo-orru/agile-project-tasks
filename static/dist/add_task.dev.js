@@ -43,7 +43,7 @@ function handleResponse(response) {
     // Success
 
     case "success":
-      window.open("../", "_self");
+      window.open("../?code=" + request.status, "_self");
       break;
 
     default:
