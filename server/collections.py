@@ -58,26 +58,38 @@ class Task(CollectionItem):
     Otherwise returns an error message
     '''
     def validate(self):
+        response = list()
         # Empty
+        success = True
         if (self.name == ""):
-            return "nameEmpty"
+            response.append("nameEmpty")
+            success = False
         if (self.dueByDate == ""):
-            return "dueByDateEmpty"
+            response.append("dueByDateEmpty")
+            success = False
         if (self.createdBy == ""):
-            return "createdByEmpty"
+            response.append("createdByEmpty")
+            success = False
         if (self.assignee == ""):
-            return "assigneeEmpty"
+            response.append("assigneeEmpty")
+            success = False
         if (self.description == ""):
-            return "descriptionEmpty"
+            response.append("descriptionEmpty")
+            success = False
         # Invalid
         try:
             datetime.strptime(self.dueByDate, '%Y%m%d')
         except ValueError:
-            return "dueByDateInvalid"
+            response.append("dueByDateInvalid")
+            success = False
         if self.dueByDate < self.createdDate:
-            return "dueByDateInPast"
+            response.append("dueByDateInPast")
+            success = False
         # Success
-        return "success"
+        if success is True:
+            response.append("success")
+
+        return response
 
     def toSql(self):
         return SQLs.insert_row.format(

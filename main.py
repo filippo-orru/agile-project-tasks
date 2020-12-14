@@ -57,10 +57,10 @@ def tasks_post():
     task = Task.fromJson(request.json)    
     returnMsg = task.validate()
 
-    if returnMsg == "success":
-        task = collections.tasks.insert(task)
+#    if "success" in returnMsg:
+#        task = collections.tasks.insert(task)
 
-    return returnMsg
+    return jsonify(returnMsg)
     # return jsonify(task.toDict())
 
 
