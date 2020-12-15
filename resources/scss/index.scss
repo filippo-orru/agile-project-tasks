@@ -12,7 +12,22 @@ nav {
         font-size: calc(max(4vw ,30px));
     }
 }
-
+.confirm-btn{
+  background: none;
+  color: #50514F;
+  font-weight: 500;
+  border: 2px solid #50514F;
+  border-radius: 20px;
+  &:hover {
+    background: none;
+    color: #50514F;
+  }
+  &:focus {
+    color: #50514F;
+    border: solid #50514F;
+    border-radius: 20px;
+  }
+}
 .th{
     font-size: 3vh;
     border-collapse: collapse;

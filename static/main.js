@@ -1,7 +1,12 @@
 let baseUrl = window.location.origin;
 var offset = 0;
 
-$(() => loadTasks());
+$(() => {
+    loadTasks();
+    successModal();
+});
+
+
 
 function loadTasks(limit = 5) {
     console.log("loading tasks");
@@ -53,4 +58,13 @@ function loadTasks(limit = 5) {
         }
 
     });
+}
+
+function successModal(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const success = urlParams.get('success');
+    if (success === 'true') {
+        $('#successModal').modal('show');
+    }
 }
