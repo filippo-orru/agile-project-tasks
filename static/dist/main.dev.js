@@ -69,5 +69,6 @@ function successModal() {
 
   if (success === 'true') {
     $('#successModal').modal('show');
+    window.history.replaceState(null, null, window.location.href.substring(0, window.location.href.indexOf("?")));
   }
 }
