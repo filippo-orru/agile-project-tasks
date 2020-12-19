@@ -24,31 +24,31 @@ function handleResponse(response) {
     response.forEach(message => {
         switch (message) {
             case "nameEmpty":
-                $("name").addClass('is-invalid');
+                $("#name").addClass('is-invalid');
                 document.getElementById("error-text-name").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateEmpty":
-                $("dueByDate").addClass('is-invalid');
+                $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateInvalid":
-                $("dueByDate").addClass('is-invalid');
+                $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date format is invalid";
                 break;
             case "dueByDateInPast":
-                $("dueByDate").addClass('is-invalid');
+                $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date must not be set in the past";
                 break;
             case "createdByEmpty":
-                $("createdBy").addClass('is-invalid');
+                $("#createdBy").addClass('is-invalid');
                 document.getElementById("error-text-createdBy").innerHTML = "Field must not be empty";
                 break;
             case "assigneeEmpty":
-                $("assignee").addClass('is-invalid');
+                $("#assignee").addClass('is-invalid');
                 document.getElementById("error-text-assignee").innerHTML = "Field must not be empty";
                 break;
             case "descriptionEmpty":
-                $("description").addClass('is-invalid');
+                $("#description").addClass('is-invalid');
                 document.getElementById("error-text-description").innerHTML = "Field must not be empty";
                 break;
             default:
