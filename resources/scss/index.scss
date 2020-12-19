@@ -1,10 +1,10 @@
-.topnavLink{
-  &:hover{
+.topnavLink {
+  &:hover {
     text-decoration: none;
   }
 }
 
-.standardBody{
+.standardBody {
   font-family: 'Roboto', sans-serif;
   background-color: #FCFCFC;
 }
@@ -12,35 +12,39 @@
 nav {
   background-color: #403D39;
 
-    #heading {
-        font-family: 'Archivo', sans-serif;
-        color: #F6F6F6;
-        width: 30vw;
-        word-wrap: break-word;
-        font-size: calc(max(4vw ,30px));
-    }
+  #heading {
+    font-family: 'Archivo', sans-serif;
+    color: #F6F6F6;
+    width: 30vw;
+    word-wrap: break-word;
+    font-size: calc(max(4vw, 30px));
+  }
 }
-.confirm-btn{
+
+.confirm-btn {
   background: none;
   color: #50514F;
   font-weight: 500;
   border: 2px solid #50514F;
   border-radius: 20px;
+
   &:hover {
     background: none;
     color: #50514F;
   }
+
   &:focus {
     color: #50514F;
     border: solid #50514F;
     border-radius: 20px;
   }
 }
-.th{
-    font-size: 3vh;
-    border-collapse: collapse;
-    border-bottom: solid#403D39;
-    color: #50514F;
+
+.th {
+  font-size: 3vh;
+  border-collapse: collapse;
+  border-bottom: solid#403D39;
+  color: #50514F;
 }
 
 .td {
@@ -50,51 +54,48 @@ nav {
   color: #50514F;
 }
 
-.row-odd{
+.row-odd {
   background-color: #F8F8F8;
 }
 
-.Todo{
-  background-color:#FF6B6B;
+.Todo {
+  background-color: #FF6B6B;
   border-radius: 200px;
   padding: 4%;
   text-align: center;
 }
 
-.InProgress{
+.InProgress {
   background-color: #FFE66D;
   border-radius: 200px;
   padding: 4%;
   text-align: center;
 }
 
-.Done{
+.Done {
   background-color: #4ECDC4;
   border-radius: 200px;
   padding: 4%;
   text-align: center;
 }
 
-.row-template{
+.row-template {
   display: none;
 }
 
-.buttonDiv{
+.buttonDiv {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.buttonInnerDiv{
+.buttonInnerDiv {
   border: 2px solid #50514F;
   border-radius: 5px;
 }
 
-.showMore{
-    background: transparent;
-  .printButton{
-    width: calc(max(1vw, 1px));
-}
+.showMore {
+  background: transparent;
   border-color: transparent;
   text-align: center;
   outline: none;
@@ -102,89 +103,108 @@ nav {
   padding: 2px 50px;
 }
 
-.taskText{
+.printButton {
+  height: 48px;
+}
+
+.taskText {
   display: none;
 }
 
-input[type="text"]:hover, input[type="date"]:hover, input[type="textarea"]:hover {
-background-color: #f5f5f5;
-border: 1px solid;
+input[type="text"]:hover,
+input[type="date"]:hover,
+input[type="textarea"]:hover {
+  background-color: #f5f5f5;
+  border: 1px solid;
 }
 
-@media (max-width: 576px){
+@media (max-width: 576px) {
   .mobileTop {
     #heading {
-        color: #F6F6F6;
-        width: 40vw;
-        word-wrap: break-word;
-        font-size: calc(max(4vw ,30px));
+      color: #F6F6F6;
+      width: 40vw;
+      word-wrap: break-word;
+      font-size: calc(max(4vw, 30px));
     }
   }
-  .mobile-th{
+
+  .mobile-th {
     display: none;
   }
-  .mobile-task{
+
+  .mobile-task {
     text-align: left;
     border-bottom: solid #403D39;
     border-width: 2px;
   }
-  .td{
+
+  .td {
     font-size: 3.25vw;
     border-collapse: collapse;
     border-bottom-width: thin;
     border-bottom-color: #403D39;
   }
-  .state-flag{
+
+  .state-flag {
     border-radius: 20px;
   }
-  .mobile-sf-container{
+
+  .mobile-sf-container {
     padding-left: 0;
   }
-  .Todo{
-    background-color:#FF6B6B;
+
+  .Todo {
+    background-color: #FF6B6B;
   }
-  .InProgress{
+
+  .InProgress {
     background-color: #FFE66D;
   }
-  .Done{
+
+  .Done {
     background-color: #4ECDC4;
   }
-  p{
+
+  p {
     margin-top: 0;
     margin-bottom: 0rem;
     font-size: 200%;
   }
+
   .p-4 {
-    padding: 0.5rem!important;
+    padding: 0.5rem !important;
   }
+
   .p-5 {
-    padding: 1rem!important;
+    padding: 1rem !important;
   }
-  .taskText{
+
+  .taskText {
     display: block;
   }
 }
 
-.addTaskButton{
+.addTaskButton {
   border-style: solid;
-  border-width: calc(min(1vw ,3px));
+  border-width: calc(min(1vw, 3px));
   border-color: #403D39;
   background-color: transparent;
   border-radius: 4px;
-  font-size: calc(max(2vw ,12px));
+  font-size: calc(max(2vw, 12px));
   font-weight: bold;
   color: #403D39;
   padding: 10px;
   white-space: nowrap;
 
-  &:hover{
+  &:hover {
     background-color: #403D39;
     color: #F6F6F6;
     text-decoration: none;
     font-weight: normal;
   }
 }
-.error-text{
+
+.error-text {
   font-size: 11pt;
   color: red;
 }
