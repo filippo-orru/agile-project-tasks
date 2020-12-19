@@ -14,14 +14,19 @@ function handleResponse(response) {
     if(response.includes("success")){
         window.open("/?success=" + true, "_self");
     }
-    var wtf = false;
+
     response.forEach(message => {
         switch (message) {
-            // Empty
             case "nameEmpty":
                 document.getElementById("name").style.borderColor = "#FF0000";
                 break;
             case "dueByDateEmpty":
+                document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                break;
+            case "dueByDateInvalid":
+                document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                break;
+            case "dueByDateInPast":
                 document.getElementById("dueByDate").style.borderColor = "#FF0000";
                 break;
             case "createdByEmpty":
@@ -33,20 +38,10 @@ function handleResponse(response) {
             case "descriptionEmpty":
                 document.getElementById("description").style.borderColor = "#FF0000";
                 break;
-            // Invalid
-            case "dueByDateInvalid":
-                document.getElementById("dueByDate").style.borderColor = "#FF0000";
-                break;
-            case "dueByDateInPast":
-                document.getElementById("dueByDate").style.borderColor = "#FF0000";
-                break;
             default:
-                wtf = true;
+                console.error("An unknown error has accured");
         }
     });
-    if (wtf === true){
-        console.log("Yo, wtf?!");
-    }
 
 }
 

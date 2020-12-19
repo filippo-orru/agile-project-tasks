@@ -59,13 +59,20 @@ class Task(CollectionItem):
     '''
     def validate(self):
         response = list()
-        # Empty
         success = True
         if (self.name == ""):
             response.append("nameEmpty")
             success = False
         if (self.dueByDate == ""):
             response.append("dueByDateEmpty")
+            success = False
+        try:
+            datetime.strptime(self.dueByDate, '%Y%m%d')
+        except ValueError:
+            response.append("dueByDateInvalid")
+            success = False
+        if self.dueByDate < self.createdDate:
+            response.append("dueByDateInPast")
             success = False
         if (self.createdBy == ""):
             response.append("createdByEmpty")
@@ -75,15 +82,6 @@ class Task(CollectionItem):
             success = False
         if (self.description == ""):
             response.append("descriptionEmpty")
-            success = False
-        # Invalid
-        try:
-            datetime.strptime(self.dueByDate, '%Y%m%d')
-        except ValueError:
-            response.append("dueByDateInvalid")
-            success = False
-        if self.dueByDate < self.createdDate:
-            response.append("dueByDateInPast")
             success = False
         # Success
         if success is True:

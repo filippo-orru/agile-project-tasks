@@ -4,51 +4,51 @@ function handleResponse(response) {
   // TODO: Mit Bootstrap einheitlich gestallten
   // (wie Frontend-Validation)
   console.log(response);
-  document.getElementById("name").style.borderColor = "#FFFFFF";
-  document.getElementById("dueByDate").style.borderColor = "#FFFFFF";
-  document.getElementById("createdBy").style.borderColor = "#FFFFFF";
-  document.getElementById("assignee").style.borderColor = "#FFFFFF";
-  document.getElementById("description").style.borderColor = "#FFFFFF";
+  document.getElementById("name").style.borderColor = "#ced4da";
+  document.getElementById("dueByDate").style.borderColor = "#ced4da";
+  document.getElementById("createdBy").style.borderColor = "#ced4da";
+  document.getElementById("assignee").style.borderColor = "#ced4da";
+  document.getElementById("description").style.borderColor = "#ced4da";
+  response = JSON.parse(response);
 
-  switch (response) {
-    // Empty
-    case "nameEmpty":
-      document.getElementById("name").style.borderColor = "#FF0000";
-      break;
-
-    case "dueByDateEmpty":
-      document.getElementById("dueByDate").style.borderColor = "#FF0000";
-      break;
-
-    case "createdByEmpty":
-      document.getElementById("createdBy").style.borderColor = "#FF0000";
-      break;
-
-    case "assigneeEmpty":
-      document.getElementById("assignee").style.borderColor = "#FF0000";
-      break;
-
-    case "descriptionEmpty":
-      document.getElementById("description").style.borderColor = "#FF0000";
-      break;
-    // Invalid
-
-    case "dueByDateInvalid":
-      document.getElementById("dueByDate").style.borderColor = "#FF0000";
-      break;
-
-    case "dueByDateInPast":
-      document.getElementById("dueByDate").style.borderColor = "#FF0000";
-      break;
-    // Success
-
-    case "success":
-      window.open("../?success=" + (request === "success"), "_self");
-      break;
-
-    default:
-      console.log("Yo, wtf?!");
+  if (response.includes("success")) {
+    window.open("/?success=" + true, "_self");
   }
+
+  response.forEach(function (message) {
+    switch (message) {
+      case "nameEmpty":
+        document.getElementById("name").style.borderColor = "#FF0000";
+        break;
+
+      case "dueByDateEmpty":
+        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        break;
+
+      case "dueByDateInvalid":
+        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        break;
+
+      case "dueByDateInPast":
+        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        break;
+
+      case "createdByEmpty":
+        document.getElementById("createdBy").style.borderColor = "#FF0000";
+        break;
+
+      case "assigneeEmpty":
+        document.getElementById("assignee").style.borderColor = "#FF0000";
+        break;
+
+      case "descriptionEmpty":
+        document.getElementById("description").style.borderColor = "#FF0000";
+        break;
+
+      default:
+        console.error("An unknown error has accured");
+    }
+  });
 }
 
 function addTask() {
