@@ -102,14 +102,9 @@ nav {
   display: none;
 }
 
-input[type="text"]:hover, input[type="date"]:hover {
+input[type="text"]:hover, input[type="date"]:hover, input[type="textarea"]:hover {
 background-color: #f5f5f5;
 border: 1px solid;
-}
-
-input[type="text"]:hover, input[type="date"]:hover {
-  background-color: #f5f5f5;
-  border: 1px solid;
 }
 
 @media (max-width: 576px){
