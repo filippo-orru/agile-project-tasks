@@ -54,14 +54,13 @@ def tasks_get():
 
 @app.route('/api/tasks', methods=["POST"])
 def tasks_post():
-    task = Task.fromJson(request.json)    
+    task = Task.fromJson(request.json)
     returnMsg = task.validate()
 
-#    if "success" in returnMsg:
-#        task = collections.tasks.insert(task)
+    if "success" in returnMsg:
+        task = collections.tasks.insert(task)
 
     return jsonify(returnMsg)
-    # return jsonify(task.toDict())
 
 
 @app.route('/api/tasks/<id>', methods=["GET"])
