@@ -35,4 +35,4 @@ class SQLs:
 
     drop = "DROP TABLE {}"
 
-    insert_schema = 'INSERT INTO schema(name,version) VALUES("{0}","{1}") ON CONFLICT(name) DO UPDATE SET version={1};'
+    insert_schema = 'INSERT OR REPLACE INTO schema(name,version) VALUES("{0}","{1}");'
