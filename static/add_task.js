@@ -1,6 +1,6 @@
 function handleResponse(response) {
 
-    // TODO: Mit Bootstrap einheitlich gestallten
+    // TODO: Mit Bootstrap einheitlich gestalten
     // (wie Frontend-Validation)
 
     console.log(response);
@@ -17,7 +17,7 @@ function handleResponse(response) {
     document.getElementById("error-text-description").innerHTML = "";
 
     response = JSON.parse(response);
-    if(response.includes("success")){
+    if (response.includes("success")) {
         window.open("/?success=" + true, "_self");
     }
 
@@ -76,8 +76,8 @@ function addTask() {
     let request = new XMLHttpRequest();
     request.open("POST", "api/tasks", true);
     request.setRequestHeader("Content-Type", "application/json");
-    request.onreadystatechange = function(){
-        if(request.readyState === 4){
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
             handleResponse(request.response);
         }
     };
@@ -87,7 +87,7 @@ function addTask() {
 
 let addTaskButton = document.getElementById('add-task-button');
 
-addTaskButton.addEventListener('click', function(event){
+addTaskButton.addEventListener('click', function (event) {
     event.preventDefault();
     addTask();
 });
