@@ -53,18 +53,19 @@ function loadTasks(limit = 5) {
                 $('.buttonDiv').css('display', 'none');
             }
         },
-        error: function (e){
+        error: function (e) {
             console.log("loading failed");
         }
 
     });
 }
 
-function successModal(){
+function successModal() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const success = urlParams.get('success');
     if (success === 'true') {
         $('#successModal').modal('show');
+        window.history.replaceState(null, null, window.location.href.substring(0, window.location.href.indexOf("?")));
     }
 }
