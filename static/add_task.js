@@ -18,7 +18,7 @@ function handleResponse(response) {
 
     response = JSON.parse(response);
     if (response.includes("success")) {
-        window.open("/?success=" + true, "_self");
+        window.open("../?success=" + true, "_self");
     }
 
     response.forEach(message => {
