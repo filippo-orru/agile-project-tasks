@@ -10,6 +10,12 @@ function handleResponse(response) {
     document.getElementById("assignee").style.borderColor = "#ced4da";
     document.getElementById("description").style.borderColor = "#ced4da";
 
+    document.getElementById("error-text-name").innerHTML = "";
+    document.getElementById("error-text-dueByDate").innerHTML = "";
+    document.getElementById("error-text-createdBy").innerHTML = "";
+    document.getElementById("error-text-assignee").innerHTML = "";
+    document.getElementById("error-text-description").innerHTML = "";
+
     response = JSON.parse(response);
     if(response.includes("success")){
         window.open("/?success=" + true, "_self");
@@ -19,24 +25,31 @@ function handleResponse(response) {
         switch (message) {
             case "nameEmpty":
                 document.getElementById("name").style.borderColor = "#FF0000";
+                document.getElementById("error-text-name").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateEmpty":
                 document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                document.getElementById("error-text-dueByDate").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateInvalid":
                 document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                document.getElementById("error-text-dueByDate").innerHTML = "Date format is invalid";
                 break;
             case "dueByDateInPast":
                 document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                document.getElementById("error-text-dueByDate").innerHTML = "Date must not be set in the past";
                 break;
             case "createdByEmpty":
                 document.getElementById("createdBy").style.borderColor = "#FF0000";
+                document.getElementById("error-text-createdBy").innerHTML = "Field must not be empty";
                 break;
             case "assigneeEmpty":
                 document.getElementById("assignee").style.borderColor = "#FF0000";
+                document.getElementById("error-text-assignee").innerHTML = "Field must not be empty";
                 break;
             case "descriptionEmpty":
                 document.getElementById("description").style.borderColor = "#FF0000";
+                document.getElementById("error-text-description").innerHTML = "Field must not be empty";
                 break;
             default:
                 console.error("An unknown error has accured");

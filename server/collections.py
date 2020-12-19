@@ -66,14 +66,16 @@ class Task(CollectionItem):
         if (self.dueByDate == ""):
             response.append("dueByDateEmpty")
             success = False
-        try:
-            datetime.strptime(self.dueByDate, '%Y%m%d')
-        except ValueError:
-            response.append("dueByDateInvalid")
-            success = False
-        if self.dueByDate < self.createdDate:
+        elif (self.dueByDate < self.createdDate):
             response.append("dueByDateInPast")
             success = False
+        else:
+            try:
+                datetime.strptime(self.dueByDate, '%Y%m%d')
+            except ValueError:
+                response.append("dueByDateInvalid")
+                success = False
+        
         if (self.createdBy == ""):
             response.append("createdByEmpty")
             success = False
