@@ -4,11 +4,11 @@ function handleResponse(response) {
     // (wie Frontend-Validation)
 
     console.log(response);
-    document.getElementById("name").style.borderColor = "#ced4da";
-    document.getElementById("dueByDate").style.borderColor = "#ced4da";
-    document.getElementById("createdBy").style.borderColor = "#ced4da";
-    document.getElementById("assignee").style.borderColor = "#ced4da";
-    document.getElementById("description").style.borderColor = "#ced4da";
+    $("#name").removeClass('is-invalid');
+    $("#dueByDate").removeClass('is-invalid');
+    $("#createdBy").removeClass('is-invalid');
+    $("#assignee").removeClass('is-invalid');
+    $("#description").removeClass('is-invalid');
 
     document.getElementById("error-text-name").innerHTML = "";
     document.getElementById("error-text-dueByDate").innerHTML = "";
@@ -24,31 +24,31 @@ function handleResponse(response) {
     response.forEach(message => {
         switch (message) {
             case "nameEmpty":
-                document.getElementById("name").style.borderColor = "#FF0000";
+                $("name").addClass('is-invalid');
                 document.getElementById("error-text-name").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateEmpty":
-                document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                $("dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Field must not be empty";
                 break;
             case "dueByDateInvalid":
-                document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                $("dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date format is invalid";
                 break;
             case "dueByDateInPast":
-                document.getElementById("dueByDate").style.borderColor = "#FF0000";
+                $("dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date must not be set in the past";
                 break;
             case "createdByEmpty":
-                document.getElementById("createdBy").style.borderColor = "#FF0000";
+                $("createdBy").addClass('is-invalid');
                 document.getElementById("error-text-createdBy").innerHTML = "Field must not be empty";
                 break;
             case "assigneeEmpty":
-                document.getElementById("assignee").style.borderColor = "#FF0000";
+                $("assignee").addClass('is-invalid');
                 document.getElementById("error-text-assignee").innerHTML = "Field must not be empty";
                 break;
             case "descriptionEmpty":
-                document.getElementById("description").style.borderColor = "#FF0000";
+                $("description").addClass('is-invalid');
                 document.getElementById("error-text-description").innerHTML = "Field must not be empty";
                 break;
             default:
