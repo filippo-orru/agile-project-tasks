@@ -1,3 +1,9 @@
+.topnavLink{
+  &:hover{
+    text-decoration: none;
+  }
+}
+
 .standardBody{
   font-family: 'Archivo', sans-serif;
 }
@@ -160,4 +166,22 @@ input[type="text"]:hover, input[type="date"]:hover {
   }
 }
 
+.addTaskButton{
+  border-style: solid;
+  border-width: calc(min(1vw ,3px));
+  border-color: #403D39;
+  background-color: transparent;
+  border-radius: 4px;
+  font-size: calc(max(2vw ,12px));
+  font-weight: bold;
+  color: #403D39;
+  padding: 10px;
+  // box-shadow: 3px 3px rgb(0,0,0,0.5);
 
+  &:hover{
+    background-color: #403D39;
+    color: #F6F6F6;
+    text-decoration: none;
+    font-weight: normal;
+  }
+}
