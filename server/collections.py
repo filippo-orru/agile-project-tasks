@@ -63,6 +63,9 @@ class Task(CollectionItem):
         if (self.name == ""):
             response.append("nameEmpty")
             success = False
+        elif (len(self.name) > 25):
+            response.append("nameTooLong")
+            success = False
         if (self.dueByDate == ""):
             response.append("dueByDateEmpty")
             success = False
@@ -79,11 +82,20 @@ class Task(CollectionItem):
         if (self.createdBy == ""):
             response.append("createdByEmpty")
             success = False
+        elif (len(self.createdBy) > 25):
+            response.append("createdByTooLong")
+            success = False
         if (self.assignee == ""):
             response.append("assigneeEmpty")
             success = False
+        elif (len(self.assignee) > 25):
+            response.append("assigneeTooLong")
+            success = False
         if (self.description == ""):
             response.append("descriptionEmpty")
+            success = False
+        elif (len(self.description) > 40):
+            response.append("descriptionTooLong")
             success = False
         # Success
         if success is True:

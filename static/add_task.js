@@ -27,10 +27,20 @@ function handleResponse(response) {
                 $("#name").addClass('is-invalid');
                 document.getElementById("error-text-name").innerHTML = "Field must not be empty";
                 break;
+            case "nameTooLong":
+                $("#name").addClass('is-invalid');
+                document.getElementById("error-text-name").innerHTML = "Input is too long";
+                break;
+            
             case "dueByDateEmpty":
                 $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Field must not be empty";
                 break;
+            case "dueByDateTooLong":
+                $("#dueByDate").addClass('is-invalid');
+                document.getElementById("error-text-dueByDate").innerHTML = "Input is too long";
+                break;
+            
             case "dueByDateInvalid":
                 $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date format is invalid";
@@ -39,17 +49,32 @@ function handleResponse(response) {
                 $("#dueByDate").addClass('is-invalid');
                 document.getElementById("error-text-dueByDate").innerHTML = "Date must not be set in the past";
                 break;
+            
             case "createdByEmpty":
                 $("#createdBy").addClass('is-invalid');
                 document.getElementById("error-text-createdBy").innerHTML = "Field must not be empty";
                 break;
+            case "createdByTooLong":
+                $("#createdBy").addClass('is-invalid');
+                document.getElementById("error-text-createdBy").innerHTML = "Input is too long";
+                break;
+            
             case "assigneeEmpty":
                 $("#assignee").addClass('is-invalid');
                 document.getElementById("error-text-assignee").innerHTML = "Field must not be empty";
                 break;
+            case "assigneeEmptyTooLong":
+                $("#assigneeEmpty").addClass('is-invalid');
+                document.getElementById("error-text-assigneeEmpty").innerHTML = "Input is too long";
+                break;
+            
             case "descriptionEmpty":
                 $("#description").addClass('is-invalid');
                 document.getElementById("error-text-description").innerHTML = "Field must not be empty";
+                break;
+            case "descriptionTooLong":
+                $("#description").addClass('is-invalid');
+                document.getElementById("error-text-description").innerHTML = "Input is too long";
                 break;
             default:
                 console.error("An unknown error has accured");

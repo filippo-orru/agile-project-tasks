@@ -1,14 +1,14 @@
 "use strict";
 
 function handleResponse(response) {
-  // TODO: Mit Bootstrap einheitlich gestallten
+  // TODO: Mit Bootstrap einheitlich gestalten
   // (wie Frontend-Validation)
   console.log(response);
-  document.getElementById("name").style.borderColor = "#ced4da";
-  document.getElementById("dueByDate").style.borderColor = "#ced4da";
-  document.getElementById("createdBy").style.borderColor = "#ced4da";
-  document.getElementById("assignee").style.borderColor = "#ced4da";
-  document.getElementById("description").style.borderColor = "#ced4da";
+  $("#name").removeClass('is-invalid');
+  $("#dueByDate").removeClass('is-invalid');
+  $("#createdBy").removeClass('is-invalid');
+  $("#assignee").removeClass('is-invalid');
+  $("#description").removeClass('is-invalid');
   document.getElementById("error-text-name").innerHTML = "";
   document.getElementById("error-text-dueByDate").innerHTML = "";
   document.getElementById("error-text-createdBy").innerHTML = "";
@@ -17,44 +17,69 @@ function handleResponse(response) {
   response = JSON.parse(response);
 
   if (response.includes("success")) {
-    window.open("/?success=" + true, "_self");
+    window.open(window.location.href + "/../?success=" + true, "_self");
   }
 
   response.forEach(function (message) {
     switch (message) {
       case "nameEmpty":
-        document.getElementById("name").style.borderColor = "#FF0000";
+        $("#name").addClass('is-invalid');
         document.getElementById("error-text-name").innerHTML = "Field must not be empty";
         break;
 
+      case "nameTooLong":
+        $("#name").addClass('is-invalid');
+        document.getElementById("error-text-name").innerHTML = "Input is too long";
+        break;
+
       case "dueByDateEmpty":
-        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        $("#dueByDate").addClass('is-invalid');
         document.getElementById("error-text-dueByDate").innerHTML = "Field must not be empty";
         break;
 
+      case "dueByDateTooLong":
+        $("#dueByDate").addClass('is-invalid');
+        document.getElementById("error-text-dueByDate").innerHTML = "Input is too long";
+        break;
+
       case "dueByDateInvalid":
-        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        $("#dueByDate").addClass('is-invalid');
         document.getElementById("error-text-dueByDate").innerHTML = "Date format is invalid";
         break;
 
       case "dueByDateInPast":
-        document.getElementById("dueByDate").style.borderColor = "#FF0000";
+        $("#dueByDate").addClass('is-invalid');
         document.getElementById("error-text-dueByDate").innerHTML = "Date must not be set in the past";
         break;
 
       case "createdByEmpty":
-        document.getElementById("createdBy").style.borderColor = "#FF0000";
+        $("#createdBy").addClass('is-invalid');
         document.getElementById("error-text-createdBy").innerHTML = "Field must not be empty";
         break;
 
+      case "createdByTooLong":
+        $("#createdBy").addClass('is-invalid');
+        document.getElementById("error-text-createdBy").innerHTML = "Input is too long";
+        break;
+
       case "assigneeEmpty":
-        document.getElementById("assignee").style.borderColor = "#FF0000";
+        $("#assignee").addClass('is-invalid');
         document.getElementById("error-text-assignee").innerHTML = "Field must not be empty";
         break;
 
+      case "assigneeEmptyTooLong":
+        $("#assigneeEmpty").addClass('is-invalid');
+        document.getElementById("error-text-assigneeEmpty").innerHTML = "Input is too long";
+        break;
+
       case "descriptionEmpty":
-        document.getElementById("description").style.borderColor = "#FF0000";
+        $("#description").addClass('is-invalid');
         document.getElementById("error-text-description").innerHTML = "Field must not be empty";
+        break;
+
+      case "descriptionTooLong":
+        $("#description").addClass('is-invalid');
+        document.getElementById("error-text-description").innerHTML = "Input is too long";
         break;
 
       default:
