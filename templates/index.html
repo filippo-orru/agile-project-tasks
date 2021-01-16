@@ -20,16 +20,22 @@
 <body class="standardBody">
   <nav class="container-fluid">
     <section class="row">
-      <div class="mobileTop col-lg-10 col-md-10 col-sm-9 col-xs-8 col-8 p-3 pl-5">
+      <div class="mobileTop col-7 p-3 pl-5 my-auto">
 
         <div class="topnav">
           <a href="./" class="topnavLink">
             <h1 id="heading">Agile Manager</h1>
           </a>
         </div>
-
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-3 col-4 pt-4 pb-3">
+
+      <div class="col-4 my-auto">
+        <div class="md-form">
+          <input class="form-control searchbox" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </div>
+
+      <div class="col-1 my-auto d-flex justify-content-end">
         <a href="print" target="_blank"><img class="printButton" src="static/printbutton.svg" alt="Print Button"></a>
       </div>
     </section>
@@ -57,11 +63,13 @@
     </div>
   </div>
 
-  <div class="col-lg-2 col-md-2 col-sm-3 col-4 pt-4 pb-3">
-    <a href="add_task" class="addTaskButton">+ Add Task</a>
+  <div class="row pt-5 pb-3">
+    <div class="col-lg-2 col-md-2 col-sm-3 col-4 pl-5">
+      <a href="add_task" class="addTaskButton">+ Add Task</a>
+    </div>
   </div>
-
-  <section class="container-fluid p-5">
+  
+  <section class="container-fluid pl-5 pr-5 pb-5 pt-3">
     <div id="task-table">
       <div class="mobile-th row th">
         <div class="mobile-task col-lg-6 col-md-6 col-sm-6 col-6">Task name</div>

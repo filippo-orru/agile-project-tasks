@@ -111,11 +111,38 @@ nav {
   display: none;
 }
 
-input[type="text"]:hover,
-input[type="date"]:hover,
-input[type="textarea"]:hover {
+input[type="text"]:hover.hover,
+input[type="date"]:hover.hover,
+input[type="textarea"]:hover.hover {
   background-color: #f5f5f5;
   border: 1px solid;
+}
+
+.searchbox{
+  background-color: #403D39;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius:0;
+  color:  #EDEAE7;
+  outline: none;
+  
+
+  &:hover{
+    background-color: #403D39;
+    outline: none;
+  }
+  &:focus{
+    background-color: #403D39;
+    outline: none;
+    outline-width: 0;
+  }
+
+  &:active{
+    background-color: #403D39;
+    outline: none;
+    outline-width: 0;
+  }
 }
 
 @media (max-width: 576px) {
