@@ -117,6 +117,11 @@ input[type="textarea"]:hover.hover {
   background-color: #f5f5f5;
   border: 1px solid;
 }
+.searchbox::placeholder{
+  color: #EDEAE7;
+  outline: none;
+  
+}
 
 .searchbox{
   background-color: #403D39;
@@ -125,25 +130,36 @@ input[type="textarea"]:hover.hover {
   border-right: none;
   border-radius:0;
   color:  #EDEAE7;
-  outline: none;
+  box-shadow: none;
   
-
   &:hover{
+    color:  #EDEAE7;
     background-color: #403D39;
-    outline: none;
-  }
-  &:focus{
-    background-color: #403D39;
-    outline: none;
-    outline-width: 0;
+    box-shadow: none;
   }
 
-  &:active{
+  &:focus{
+    color:  #EDEAE7;
     background-color: #403D39;
+    box-shadow: none;
     outline: none;
-    outline-width: 0;
+  }
+  
+  &:active{
+    color:  #EDEAE7;
+    background-color: #403D39;
+    box-shadow: none;
   }
 }
+
+.input-group-text{
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+
 
 @media (max-width: 576px) {
   .mobileTop {
