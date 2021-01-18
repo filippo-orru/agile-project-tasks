@@ -36,3 +36,5 @@ class SQLs:
     drop = "DROP TABLE {}"
 
     insert_schema = 'INSERT OR REPLACE INTO schema(name,version) VALUES("{0}","{1}");'
+
+    having = "HAVING {} "

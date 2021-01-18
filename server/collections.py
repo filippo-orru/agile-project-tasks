@@ -145,16 +145,20 @@ class Tasks(AbstractCollection):
         super().__init__('tasks', 'resources/test_data.csv', self.schema, Task,
                          database_connection)
 
-    def get_many(self, offset: int, limit: int):
+    def get_many(self, offset: int, limit: int, searchFilter: str):
+        searchFilter = escape(searchFilter)
         all_tasks_count = self.database_connection.execute_sql(
-            SQLs.count.format(self.name)).fetchone()[0]
-
+            SQLs.count.format('('+ SQLs.select.format(self.name) + SQLs.where.format("assignee LIKE ?") +')'),
+            ('%' + searchFilter + '%',)
+            ).fetchone()[0]
         # yapf: disable
+
         tasks = self.database_connection.execute_sql(
             SQLs.select.format(self.name) +
+            SQLs.where.format("assignee LIKE ?") +
             SQLs.order_by.format('state DESC, dueByDate ASC') +
             SQLs.limit.format(str(limit)) +
-            SQLs.offset.format(str(offset))
+            SQLs.offset.format(str(offset)), ('%' + searchFilter + '%',)
         ).fetchall()
         # yapf: enable
 

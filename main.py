@@ -30,6 +30,7 @@ def add_task():
 
 @app.route('/api/tasks', methods=["GET"])
 def tasks_get():
+    searchFilter = request.args.get('search')
     offset = 0
     offsetStr = request.args.get('offset')
     if offsetStr and offsetStr != '':
@@ -40,7 +41,7 @@ def tasks_get():
     if limitStr and limitStr != '':
         limit = int(limitStr)
 
-    tasks, more = collections.tasks.get_many(offset, limit)
+    tasks, more = collections.tasks.get_many(offset, limit, searchFilter)
 
     tasks = list(map(lambda task: task.toDict(), tasks))
 
@@ -48,7 +49,8 @@ def tasks_get():
         "offset": offset,
         "limit": limit,
         "more": more,
-        "tasks": tasks
+        "tasks": tasks,
+        "search": searchFilter
     })
 
 
