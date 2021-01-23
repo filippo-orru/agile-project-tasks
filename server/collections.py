@@ -139,9 +139,6 @@ class Tasks(AbstractCollection):
                          database_connection)
 
     def get_many(self, offset: int, limit: int):
-        '''
-        set limit to -1 to get all tasks
-        '''
         all_tasks_count = self.database_connection.execute_sql(
             SQLs.count.format(self.name)).fetchone()[0]
 
@@ -153,6 +150,30 @@ class Tasks(AbstractCollection):
             sql += SQLs.offset.format(str(offset))
 
         tasks = self.database_connection.execute_sql(sql).fetchall()
+
+    def get_many(self, offset: int, limit: int, searchFilter: str):
+        '''
+        Set limit to -1 to get all tasks
+        '''
+        searchFilter = escape(searchFilter)
+        all_tasks_count = self.database_connection.execute_sql(
+            SQLs.count.format('(' + SQLs.select.format(self.name) +
+                              SQLs.where.format("assignee LIKE ?") + ')'),
+            ('%' + searchFilter + '%', )).fetchone()[0]
+
+        sql = SQLs.select.format(self.name)
+        params = None
+
+        if searchFilter != None and len(searchFilter) > 0:
+            sql += SQLs.where.format("assignee LIKE ?")
+            params = ('%' + searchFilter + '%', )
+
+        sql += SQLs.order_by.format('state DESC, dueByDate ASC')
+        if limit != -1:
+            sql += SQLs.limit.format(str(limit))
+            sql += SQLs.offset.format(str(offset))
+
+        tasks = self.database_connection.execute_sql(sql, params).fetchall()
 
         tasks = list(map(lambda tuple: Task(*tuple), tasks))
         more = all_tasks_count > limit + offset

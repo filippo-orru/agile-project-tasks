@@ -120,14 +120,11 @@ input[type="textarea"]:hover.hover {
 .searchbox::placeholder{
   color: #EDEAE7;
   outline: none;
-  
 }
 
 .searchbox{
   background-color: #403D39;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: none;
   border-radius:0;
   color:  #EDEAE7;
   box-shadow: none;
@@ -136,6 +133,7 @@ input[type="textarea"]:hover.hover {
     color:  #EDEAE7;
     background-color: #403D39;
     box-shadow: none;
+    text-decoration:none;
   }
 
   &:focus{
@@ -143,22 +141,25 @@ input[type="textarea"]:hover.hover {
     background-color: #403D39;
     box-shadow: none;
     outline: none;
+    text-decoration:none;
   }
   
   &:active{
     color:  #EDEAE7;
     background-color: #403D39;
     box-shadow: none;
+    text-decoration:none;
   }
 }
 
 .input-group-text{
   border-radius: 0;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
+  border: none;
 }
 
+.underline{
+  border-bottom: 1px solid #EDEAE7;
+}
 
 
 @media (max-width: 576px) {

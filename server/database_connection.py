@@ -16,7 +16,10 @@ class DatabaseConnection:
                                           check_same_thread=False)
         self.cursor = self.connection.cursor()
 
-    def execute_sql(self, sql):
-        val = self.cursor.execute(sql)
+    def execute_sql(self, sql, params = None):
+        if params:
+            val = self.cursor.execute(sql, params)
+        else:
+            val = self.cursor.execute(sql)
         self.connection.commit()
         return val

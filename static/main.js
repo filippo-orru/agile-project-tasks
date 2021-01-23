@@ -1,18 +1,31 @@
 let baseUrl = window.location.origin;
 var offset = 0;
+var lastSearch = '';
 
 $(() => {
+    writeSearchParamToSearchBar();
     loadTasks();
     successModal();
-});
+    $('.searchbox').keydown(function (event){
+        var key = (event.keyCode ? event.keyCode : event.which);
 
+        if(key == '13'){
+            addSearchParamsAndLoadTasks(event.target.value);
+        }
+    });
+});
 
 
 function loadTasks(limit = 5) {
     console.log("loading tasks");
+    const search = getURLSearchParam();
+    if(search != lastSearch){
+        offset = 0;
+    }
     let config = {
         'limit': limit,
         'offset': offset,
+        'search': search,
     }
     $.ajax({
         type: "GET",
@@ -21,6 +34,13 @@ function loadTasks(limit = 5) {
         data: config,
         success: function (data) {
             console.log("rendering tasks");
+            if(search != lastSearch){
+                var rows = $('.row-tasks');
+                $.each(rows, function (){
+                    $(this).remove();
+                })
+
+            }
             var even;
             even = offset % 2 == 0;
             var count = 0;
@@ -29,9 +49,9 @@ function loadTasks(limit = 5) {
                 template.removeClass('row-template');
                 template.removeClass('d-none');
                 if (even) {
-                    template.addClass('row-even');
+                    template.addClass('row-even row-tasks');
                 } else {
-                    template.addClass('row-odd');
+                    template.addClass('row-odd row-tasks');
                 }
                 var templateItems = template.children('div');
                 $(templateItems[0]).html(value.name);
@@ -49,15 +69,24 @@ function loadTasks(limit = 5) {
                 count++;
             })
             offset += count;
+
             if (!data.more) {
-                $('.buttonDiv').css('display', 'none');
+                $('.buttonDiv').addClass('d-none');
             }
+            else {
+                $('.buttonDiv').removeClass('d-none');
+            }
+            lastSearch = search;
         },
         error: function (e) {
             console.log("loading failed");
         }
 
     });
+}
+function writeSearchParamToSearchBar(){
+    const search = getURLSearchParam();
+    $('.searchbox').val(search);
 }
 
 function successModal() {
@@ -69,3 +98,23 @@ function successModal() {
         window.history.replaceState(null, null, window.location.href.substring(0, window.location.href.indexOf("?")));
     }
 }
+function getURLSearchParam(){
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const search = urlParams.get('search');
+    return search ? search : '';
+}
+
+function addSearchParamsAndLoadTasks(data){
+    if (data){
+        window.history.replaceState(null, null, '/?search=' + encodeURIComponent(data));
+    }
+    else{
+        window.history.replaceState(null, null, '/');
+    }
+    if(data != lastSearch){
+        loadTasks();
+    }
+}
+
+
