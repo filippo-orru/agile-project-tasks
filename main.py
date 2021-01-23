@@ -34,7 +34,8 @@ def tasks_add():
 @app.route('/tasks/download')
 def tasks_download():
     tasks, _ = collections.tasks.get_many(0, limit=-1)
-    all_tasks = list(map(lambda task: task.toDict(), tasks))
+    all_tasks = list(map(lambda task: task.toDict(formatHumanTime=True),
+                         tasks))
     htmlString = render_template('pdf_template.jinja2', tasks=all_tasks)
 
     pdf = pdfkit.from_string(str(htmlString),

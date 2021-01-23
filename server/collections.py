@@ -108,7 +108,11 @@ class Task(CollectionItem):
                 self.dueByDate,
             ))
 
-    def toDict(self):
+    def toDict(self, formatHumanTime=False):
+        dueByDate = self.dueByDate
+        if formatHumanTime:
+            dueByDate = "{2}.{1}.{0}".format(dueByDate[0:4], dueByDate[4:6],
+                                             dueByDate[6:8])
         return {
             "id": self.id,
             "name": self.name,
@@ -117,7 +121,7 @@ class Task(CollectionItem):
             "assignee": self.assignee,
             "createdDate": self.createdDate,
             "createdBy": self.createdBy,
-            "dueByDate": self.dueByDate
+            "dueByDate": dueByDate
         }
 
 
@@ -138,20 +142,7 @@ class Tasks(AbstractCollection):
         super().__init__('tasks', 'resources/test_data.csv', self.schema, Task,
                          database_connection)
 
-    def get_many(self, offset: int, limit: int):
-        all_tasks_count = self.database_connection.execute_sql(
-            SQLs.count.format(self.name)).fetchone()[0]
-
-        sql = (SQLs.select.format(self.name) +
-               SQLs.order_by.format('state DESC, dueByDate ASC'))
-
-        if limit != -1:
-            sql += SQLs.limit.format(str(limit))
-            sql += SQLs.offset.format(str(offset))
-
-        tasks = self.database_connection.execute_sql(sql).fetchall()
-
-    def get_many(self, offset: int, limit: int, searchFilter: str):
+    def get_many(self, offset: int, limit: int, searchFilter: str = None):
         '''
         Set limit to -1 to get all tasks
         '''
