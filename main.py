@@ -1,16 +1,19 @@
-# Tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
+# Flask tutorial: https://flask.palletsprojects.com/en/1.1.x/quickstart/
 
-from werkzeug.utils import escape
+from flask.helpers import make_response
 from server.collections import Collections, Task
-from flask import Flask, jsonify, request, redirect
+from flask import Flask, jsonify, request
 from flask.templating import render_template
 from server.database_connection import DatabaseConnection
+import pdfkit
 
 db = DatabaseConnection()
 
 collections = Collections(db)
 
 app = Flask(__name__)
+
+####  Start: General  vvvv
 
 
 @app.route('/')
@@ -23,9 +26,33 @@ def print():
     return render_template('print.html')
 
 
-@app.route('/add_task')
-def add_task():
+@app.route('/tasks/add')
+def tasks_add():
     return render_template('add_task.html')
+
+
+@app.route('/tasks/download')
+def tasks_download():
+    tasks, _ = collections.tasks.get_many(0, limit=-1)
+    all_tasks = list(map(lambda task: task.toDict(), tasks))
+    htmlString = render_template('pdf_template.jinja2', tasks=all_tasks)
+
+    pdf = pdfkit.from_string(str(htmlString),
+                             output_path=False,
+                             options={
+                                 'quiet': '',
+                                 'enable-local-file-access': '',
+                                 'default-header': '',
+                                 'header-left': 'Agile Manager - All tasks',
+                                 'header-line': '',
+                             })
+    response = make_response()
+    response.data = pdf
+    response.headers['Content-Type'] = 'application/pdf'
+    return response
+
+
+####  Start: API  vvvv
 
 
 @app.route('/api/tasks', methods=["GET"])
