@@ -2,17 +2,33 @@
 
 var baseUrl = window.location.origin;
 var offset = 0;
+var lastSearch = '';
 $(function () {
+  writeSearchParamToSearchBar();
   loadTasks();
   successModal();
+  $('.searchbox').keydown(function (event) {
+    var key = event.keyCode ? event.keyCode : event.which;
+
+    if (key == '13') {
+      addSearchParamsAndLoadTasks(event.target.value);
+    }
+  });
 });
 
 function loadTasks() {
   var limit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
   console.log("loading tasks");
+  var search = getURLSearchParam();
+
+  if (search != lastSearch) {
+    offset = 0;
+  }
+
   var config = {
     'limit': limit,
-    'offset': offset
+    'offset': offset,
+    'search': search
   };
   $.ajax({
     type: "GET",
@@ -21,6 +37,14 @@ function loadTasks() {
     data: config,
     success: function success(data) {
       console.log("rendering tasks");
+
+      if (search != lastSearch) {
+        var rows = $('.row-tasks');
+        $.each(rows, function () {
+          $(this).remove();
+        });
+      }
+
       var even;
       even = offset % 2 == 0;
       var count = 0;
@@ -30,9 +54,9 @@ function loadTasks() {
         template.removeClass('d-none');
 
         if (even) {
-          template.addClass('row-even');
+          template.addClass('row-even row-tasks');
         } else {
-          template.addClass('row-odd');
+          template.addClass('row-odd row-tasks');
         }
 
         var templateItems = template.children('div');
@@ -53,13 +77,22 @@ function loadTasks() {
       offset += count;
 
       if (!data.more) {
-        $('.buttonDiv').css('display', 'none');
+        $('.buttonDiv').addClass('d-none');
+      } else {
+        $('.buttonDiv').removeClass('d-none');
       }
+
+      lastSearch = search;
     },
     error: function error(e) {
       console.log("loading failed");
     }
   });
+}
+
+function writeSearchParamToSearchBar() {
+  var search = getURLSearchParam();
+  $('.searchbox').val(search);
 }
 
 function successModal() {
@@ -71,4 +104,41 @@ function successModal() {
     $('#successModal').modal('show');
     window.history.replaceState(null, null, window.location.href.substring(0, window.location.href.indexOf("?")));
   }
+}
+
+function getURLSearchParam() {
+  var queryString = window.location.search;
+  var urlParams = new URLSearchParams(queryString);
+  var search = urlParams.get('search');
+  return search ? search : '';
+}
+
+function addSearchParamsAndLoadTasks(data) {
+  if (data) {
+    window.history.replaceState(null, null, '/?search=' + encodeURIComponent(data));
+  } else {
+    window.history.replaceState(null, null, '/');
+  }
+
+  if (data != lastSearch) {
+    loadTasks();
+  }
+}
+
+function generate_pdf() {
+  var req = new XMLHttpRequest();
+  req.open("GET", "/tasks/download" + window.location.search, true);
+  req.responseType = "blob";
+
+  req.onload = function (event) {
+    if (this.status === 200) {
+      var blob = new Blob([req.response], {
+        type: "application/pdf"
+      });
+      var objectUrl = URL.createObjectURL(blob);
+      window.open(objectUrl);
+    }
+  };
+
+  req.send();
 }

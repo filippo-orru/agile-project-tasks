@@ -117,4 +117,17 @@ function addSearchParamsAndLoadTasks(data){
     }
 }
 
+function generate_pdf(){
+    let req = new XMLHttpRequest();
+    req.open("GET", "/tasks/download" + window.location.search, true);
+    req.responseType = "blob";
+    req.onload = function (event) {
+        if (this.status === 200) {
+            var blob = new Blob([req.response], {type: "application/pdf"});
+            var objectUrl = URL.createObjectURL(blob);
+            window.open(objectUrl);
+        }
+    };
 
+  req.send();
+}
