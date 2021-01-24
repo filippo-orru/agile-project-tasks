@@ -1,4 +1,3 @@
-let baseUrl = window.location.origin;
 var offset = 0;
 var lastSearch = '';
 
@@ -26,7 +25,7 @@ function loadTasks(limit = 5) {
         'limit': limit,
         'offset': offset,
         'search': search,
-    }
+    };
     $.ajax({
         type: "GET",
         url: 'api/tasks',
@@ -38,11 +37,11 @@ function loadTasks(limit = 5) {
                 var rows = $('.row-tasks');
                 $.each(rows, function (){
                     $(this).remove();
-                })
+                });
 
             }
             var even;
-            even = offset % 2 == 0;
+            even = offset % 2 === 0;
             var count = 0;
             $.each(data.tasks, function (_, value) {
                 var template = $('.row-template').clone();
@@ -67,7 +66,7 @@ function loadTasks(limit = 5) {
                 $('#task-table').append(template);
                 even = !even;
                 count++;
-            })
+            });
             offset += count;
 
             if (!data.more) {
@@ -78,7 +77,7 @@ function loadTasks(limit = 5) {
             }
             lastSearch = search;
         },
-        error: function (e) {
+        error: function () {
             console.log("loading failed");
         }
 
@@ -122,7 +121,7 @@ function generate_pdf(){
     let req = new XMLHttpRequest();
     req.open("GET", "/tasks/download" + window.location.search, true);
     req.responseType = "blob";
-    req.onload = function (event) {
+    req.onload = function () {
         if (this.status === 200) {
             var blob = new Blob([req.response], {type: "application/pdf"});
             var objectUrl = URL.createObjectURL(blob);
