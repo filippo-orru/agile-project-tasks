@@ -96,7 +96,7 @@ function addTask() {
         'createdBy': createdBy,
         'assignee': assignee,
         'description': description,
-    }
+    };
 
     let request = new XMLHttpRequest();
     request.open("POST", "/api/tasks", true);

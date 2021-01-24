@@ -3,7 +3,7 @@ $(() => {
 });
 
 function printSite() {
-    let config = { 'limit': -1 }
+    let config = { 'limit': -1 };
 
     $.ajax({
         type: 'GET',
@@ -37,14 +37,14 @@ function printSite() {
                 $('#task-table').append(template);
                 even = !even;
                 count++;
-            })
+            });
         },
         complete: () => {
             window.print();
             window.addEventListener("afterprint", function() {
                 setTimeout(function (){
-                    window.close()
-                }, 500)
+                    window.close();
+                }, 500);
             });
         },
     });
