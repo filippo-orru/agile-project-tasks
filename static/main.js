@@ -118,6 +118,7 @@ function addSearchParamsAndLoadTasks(data){
 }
 
 function generate_pdf(){
+    $('.generatePDFButton')[0].disabled = true;
     let req = new XMLHttpRequest();
     req.open("GET", "/tasks/download" + window.location.search, true);
     req.responseType = "blob";
@@ -127,7 +128,8 @@ function generate_pdf(){
             var objectUrl = URL.createObjectURL(blob);
             window.open(objectUrl);
         }
+        $('.generatePDFButton')[0].disabled = false;
     };
 
-  req.send();
+    req.send();
 }
