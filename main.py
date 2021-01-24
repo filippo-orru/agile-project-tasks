@@ -33,20 +33,24 @@ def tasks_add():
 
 @app.route('/tasks/download')
 def tasks_download():
-    tasks, _ = collections.tasks.get_many(0, limit=-1)
+    query = request.args.get('search')
+
+    tasks, _ = collections.tasks.get_many(0, limit=-1, searchFilter=query)
     all_tasks = list(map(lambda task: task.toDict(formatHumanTime=True),
                          tasks))
     htmlString = render_template('pdf_template.jinja2', tasks=all_tasks)
 
+    title = 'Agile Manager' + ' - All tasks' if len(query) < 1 else ''
+    options = {
+        'quiet': '',
+        'enable-local-file-access': '',
+        'default-header': '',
+        'header-left': title,
+        'header-line': '',
+    }
     pdf = pdfkit.from_string(str(htmlString),
                              output_path=False,
-                             options={
-                                 'quiet': '',
-                                 'enable-local-file-access': '',
-                                 'default-header': '',
-                                 'header-left': 'Agile Manager - All tasks',
-                                 'header-line': '',
-                             })
+                             options=options)
     response = make_response()
     response.data = pdf
     response.headers['Content-Type'] = 'application/pdf'
