@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Agile Manager - Print</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=1080">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="../static/css/print.css">
+</head>
+
+<body class="standardBody">
+  <section class="container-fluid p-5">
+    <div id="task-table">
+      <div class="row th">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">Task name</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">Assigned to</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Due Date</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2 ">Progress</div>
+      </div>
+      {% for task in tasks %}
+      <div class="row td p-4 row-odd">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6">{{task.name}}</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">{{task.assignee}}</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">{{task.dueByDate}}</div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+          <div class="col-lg-2 col-md-2 col-sm-2 col-2">{{task.state}}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  <br>
+  <span style="font-family:'Helvetica'">&nbsp;</span>
+</body>
+
+
+</html>

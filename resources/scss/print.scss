@@ -1,13 +1,20 @@
+body {
+    background-color: #fff;
+    font-family: "Arial", "Helvetica", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
 header {
     background-color: #403D39;
 
     #heading {
-        padding: 2%;
+        padding: 4px;
         text-align: center;
-        margin: 0%;
-        margin-bottom: 4%;
+        margin: 0;
+        margin-bottom: 4px;
         color: #F6F6F6;
-        font-size: 4vw;
+        font-size: 16px;
     }
 }
 
@@ -15,7 +22,7 @@ table {
     margin-left: 5%;
     margin-right: 5%;
     border-collapse: collapse;
-    font-size: 2vw;
+    font-size: 15px;
 
     .task {
         width: 6%;
@@ -25,8 +32,6 @@ table {
 
     th,
     td {
-
-
         margin: 0%;
         border-bottom: 2px solid #403D39;
         padding-top: 3%;
@@ -43,12 +48,12 @@ table {
 @media (max-width: 576px) {
     .mobilePrintBtn {
         #heading {
-            padding: 2%;
+            padding: 4px;
             text-align: left;
             margin: 0%;
             margin-bottom: 4%;
             color: #F6F6F6;
-            font-size: 4vw;
+            font-size: 16px;
         }
     }
 }

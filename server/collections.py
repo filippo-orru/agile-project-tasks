@@ -15,19 +15,19 @@ class Task(CollectionItem):
     createdBy: str
     dueByDate: str
 
-    '''
-    Escapes potentially dangerous characters
-    '''
-    def escape(string):        
+    def escape(string):
+        '''
+        Escapes potentially dangerous characters
+        '''
         saveString = ""
-        
+
         for x in string:
             if not (x.isalnum() or x.isspace()):
                 saveString += "\\"
             saveString += x
-            
+
         return saveString
-    
+
     def __init__(self, id, name, description, state, assignee, createdDate,
                  createdBy, dueByDate):
         super().__init__(id)
@@ -42,22 +42,15 @@ class Task(CollectionItem):
 
     def fromJson(json):
         createdDate = date.today().strftime("%Y%m%d")
-        return Task(
-                    0,
-                    escape(json["name"]),
-                    escape(json["description"]),
-                    "Todo",
-                    escape(json["assignee"]),
-                    createdDate,
-                    escape(json["createdBy"]),
-                    escape(json["dueByDate"])
-                )
-    
-    '''
-    Returns 'success' when a Task is valid.
-    Otherwise returns an error message
-    '''
+        return Task(0, escape(json["name"]), escape(json["description"]),
+                    "Todo", escape(json["assignee"]), createdDate,
+                    escape(json["createdBy"]), escape(json["dueByDate"]))
+
     def validate(self):
+        '''
+        Returns 'success' when a Task is valid.
+        Otherwise returns an error message
+        '''
         response = list()
         success = True
         if (self.name == ""):
@@ -78,7 +71,7 @@ class Task(CollectionItem):
             except ValueError:
                 response.append("dueByDateInvalid")
                 success = False
-        
+
         if (self.createdBy == ""):
             response.append("createdByEmpty")
             success = False
@@ -115,7 +108,11 @@ class Task(CollectionItem):
                 self.dueByDate,
             ))
 
-    def toDict(self):
+    def toDict(self, formatHumanTime=False):
+        dueByDate = self.dueByDate
+        if formatHumanTime:
+            dueByDate = "{2}.{1}.{0}".format(dueByDate[0:4], dueByDate[4:6],
+                                             dueByDate[6:8])
         return {
             "id": self.id,
             "name": self.name,
@@ -124,7 +121,7 @@ class Task(CollectionItem):
             "assignee": self.assignee,
             "createdDate": self.createdDate,
             "createdBy": self.createdBy,
-            "dueByDate": self.dueByDate
+            "dueByDate": dueByDate
         }
 
 
@@ -145,22 +142,29 @@ class Tasks(AbstractCollection):
         super().__init__('tasks', 'resources/test_data.csv', self.schema, Task,
                          database_connection)
 
-    def get_many(self, offset: int, limit: int, searchFilter: str):
+    def get_many(self, offset: int, limit: int, searchFilter: str = None):
+        '''
+        Set limit to -1 to get all tasks
+        '''
         searchFilter = escape(searchFilter)
         all_tasks_count = self.database_connection.execute_sql(
-            SQLs.count.format('('+ SQLs.select.format(self.name) + SQLs.where.format("assignee LIKE ?") +')'),
-            ('%' + searchFilter + '%',)
-            ).fetchone()[0]
-        # yapf: disable
+            SQLs.count.format('(' + SQLs.select.format(self.name) +
+                              SQLs.where.format("assignee LIKE ?") + ')'),
+            ('%' + searchFilter + '%', )).fetchone()[0]
 
-        tasks = self.database_connection.execute_sql(
-            SQLs.select.format(self.name) +
-            SQLs.where.format("assignee LIKE ?") +
-            SQLs.order_by.format('state DESC, dueByDate ASC') +
-            SQLs.limit.format(str(limit)) +
-            SQLs.offset.format(str(offset)), ('%' + searchFilter + '%',)
-        ).fetchall()
-        # yapf: enable
+        sql = SQLs.select.format(self.name)
+        params = None
+
+        if searchFilter != None and len(searchFilter) > 0:
+            sql += SQLs.where.format("assignee LIKE ?")
+            params = ('%' + searchFilter + '%', )
+
+        sql += SQLs.order_by.format('state DESC, dueByDate ASC')
+        if limit != -1:
+            sql += SQLs.limit.format(str(limit))
+            sql += SQLs.offset.format(str(offset))
+
+        tasks = self.database_connection.execute_sql(sql, params).fetchall()
 
         tasks = list(map(lambda tuple: Task(*tuple), tasks))
         more = all_tasks_count > limit + offset
