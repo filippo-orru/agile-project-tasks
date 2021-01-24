@@ -37,10 +37,11 @@ def tasks_download():
 
     tasks, _ = collections.tasks.get_many(0, limit=-1, searchFilter=query)
     all_tasks = list(map(lambda task: task.toDict(formatHumanTime=True),
-                        tasks))
+                         tasks))
     htmlString = render_template('pdf_template.jinja2', tasks=all_tasks)
 
-    title = 'Agile Manager' + ' - All tasks' if query == None or len(query) < 1 else ''
+    title = 'Agile Manager' + (' - All tasks'
+                               if query == None or len(query) < 1 else '')
     options = {
         'quiet': '',
         'enable-local-file-access': '',

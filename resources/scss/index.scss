@@ -262,4 +262,9 @@ input[type="textarea"]:hover.hover {
   &:hover {
     cursor: pointer;
   }
+
+  &:disabled {
+    opacity: 50%;
+    cursor: default;
+  }
 }
