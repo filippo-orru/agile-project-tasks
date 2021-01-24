@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <form class="container" id="addTaskForm" role="form" data-toggle="validator">
+  <form class="container" id="addTaskForm" data-toggle="validator">
     <div class="row ">
       <div class="form-group col-md-6 col-12">
         <label for="name">Task name</label>
@@ -51,7 +51,7 @@
 
       <div class="form-group col-md-6 col-12">
         <label for="dueByDate">Due by date</label>
-        <input type="date" class="form-control hover" id="dueByDate" name="dueByDate" placeholder="20.12.2020">
+        <input type="date" class="form-control hover" id="dueByDate" name="dueByDate">
         <p class="error-text" id="error-text-dueByDate"></p>
       </div>
 
@@ -75,7 +75,7 @@
 
     <div class="form-group col-12 p-0">
       <label for="description">Description</label>
-      <textarea type="text" class="form-control hover" id="description" name="description"
+      <textarea class="form-control hover" id="description" name="description"
         placeholder="This is an example description for a task" required maxlength="140"></textarea>
       <p class="error-text" id="error-text-description"></p>
     </div>
